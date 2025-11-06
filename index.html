@@ -8,16 +8,15 @@
 <style>
   body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial Black', Arial, sans-serif;
     color: white;
-    text-align: center;
     overflow-x: hidden;
     transition: background 0.5s ease;
     background: url('https://cdn.pixabay.com/photo/2015/11/07/12/28/tree-1031814_640.jpg') no-repeat center center fixed;
     background-size: cover;
   }
 
-  /* BOTON INGRESAR */
+  /* BOTÓN INGRESAR */
   #btn-ingresar {
     display: inline-block;
     margin-top: 200px;
@@ -39,21 +38,6 @@
     box-shadow: 0 0 20px #fff;
   }
 
-  h1 {
-    margin-top: 40px;
-    font-size: 3rem;
-    text-shadow: 2px 2px 8px red;
-  }
-
-  /* ---------------- TIENDA ---------------- */
-  .tienda {
-    display: none; /* Oculto al inicio */
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 40px 10px;
-  }
-
   /* SECCIÓN DE BIENVENIDA */
   .bienvenida {
     display: flex;
@@ -61,26 +45,29 @@
     align-items: center;
     width: 90%;
     max-width: 1200px;
-    background: rgba(0,0,0,0.8);
-    border: 2px solid white;
-    border-radius: 15px;
-    padding: 30px;
+    background: rgba(0,0,0,0.85);
+    border-radius: 20px;
+    padding: 40px 50px;
     margin-bottom: 40px;
-    color: white;
+    box-shadow: 0 0 20px #fff inset, 0 0 40px #000;
   }
 
   .bienvenida h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
+    background: linear-gradient(90deg, white 50%, black 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: white;
+    letter-spacing: 3px;
+    line-height: 1.2;
+    margin: 0;
   }
 
   .redes {
     display: flex;
-    gap: 20px;
-    font-size: 1.8rem;
+    gap: 25px;
+    font-size: 2rem;
   }
 
   .redes a {
@@ -92,7 +79,15 @@
     color: #00ffcc;
   }
 
-  /* PRODUCTOS */
+  /* TIENDA */
+  .tienda {
+    display: none; /* oculto al inicio */
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+  }
+
   .productos {
     display: flex;
     flex-wrap: wrap;
@@ -101,6 +96,7 @@
     width: 90%;
   }
 
+  /* PRODUCTO */
   .producto-card {
     background: rgba(0, 0, 0, 0.8);
     border: 2px solid red;
@@ -189,17 +185,29 @@
     padding: 20px;
     background: rgba(0,0,0,0.6);
     font-size: 0.9rem;
-    display: none; /* Oculto hasta ingresar */
+    display: none; /* oculto hasta ingresar */
+  }
+
+  @media(max-width: 900px){
+    .bienvenida {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+    .redes {
+      justify-content: center;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- BOTON INGRESAR -->
+<!-- BOTÓN INGRESAR -->
 <button id="btn-ingresar">INGRESAR</button>
 
 <!-- SECCIÓN TIENDA -->
 <div class="tienda" id="tienda">
+
   <!-- BIENVENIDA -->
   <div class="bienvenida">
     <h2>Bienvenido a Market Injertos Mods</h2>
@@ -219,7 +227,7 @@
         <h3>OPTIMIZACIÓN</h3>
         <p><b>Autor:</b> INJERTOS MODS</p>
         <p><b>Incluye:</b> Archivos y programas actualizados.</p>
-        <p><b>Versión:</b> Las condiciones varían, el mínimo de ram para poder ejecutar los programas es 4GB.</p>
+        <p><b>Versión:</b> Mínimo RAM: 4GB</p>
         <div class="producto-precio">$2.00 USD</div>
         <div class="botones-producto">
           <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
@@ -255,47 +263,5 @@
         <div class="producto-precio">$10.00 USD</div>
         <div class="botones-producto">
           <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
-          <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer id="footer">
-  <p>© 2025 Injertos Mods | Todos los derechos reservados. | Diseñado por Piero Quispe</p>
-</footer>
-
-<!-- SONIDO -->
-<audio id="sound" src="https://files.catbox.moe/1wqadc.mp3"></audio>
-
-<script>
-const btnIngresar = document.getElementById('btn-ingresar');
-const tienda = document.getElementById('tienda');
-const footer = document.getElementById('footer');
-const sound = document.getElementById('sound');
-
-btnIngresar.addEventListener('click', () => {
-  // Cambiar fondo al ingresar
-  document.body.style.background = "url('https://cdn.pixabay.com/photo/2016/11/22/21/39/dark-1850684_640.jpg') no-repeat center center fixed";
-  document.body.style.backgroundSize = "cover";
-
-  // Mostrar la tienda y el footer
-  tienda.style.display = "flex";
-  footer.style.display = "block";
-
-  // Ocultar botón ingresar
-  btnIngresar.style.display = "none";
-
-  // Reproducir sonido de manera segura
-  if (sound) {
-    sound.play().catch(error => {
-      console.warn("No se pudo reproducir el sonido automáticamente:", error);
-    });
-  }
-});
-</script>
-
-</body>
-</html>
+          <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></
 
