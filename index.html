@@ -1,564 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hilnzo</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      background: url('https://i.imgur.com/ZSKMRE8.jpeg') no-repeat center center;
-      background-size: cover;
-      background-attachment: scroll;
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-      transition: all 0.3s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda de Aportes | Injertos Mods</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  body {
+    margin: 0;
+    background: url('https://i.imgur.com/ZSKMRE8.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+  }
 
-    /* Overlay de contraseña inicial */
-    #password-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #000; /* Fondo sólido negro para cubrir todo */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000; /* Z-index extremadamente alto */
-      padding: 20px;
-    }
-    #password-overlay .blocker {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      z-index: -1;
-    }
-    #password-overlay .content-wrapper {
-      position: relative;
-      z-index: 1;
-    }
-    #password-overlay .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-      max-width: 500px;
-    }
-    #password-overlay img {
-      width: 100%;
-      max-height: 70vh;
-      object-fit: cover;
-      image-rendering: pixelated;
-      margin-bottom: 20px;
-    }
-    #password-overlay p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      font-weight: bold;
-      z-index: 1;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      border-radius: 5px;
-      width: 90%;
-      max-width: 400px;
-    }
-    #password-overlay input {
-      padding: 10px;
-      font-size: 1.2rem;
-      border: 2px solid red;
-      border-radius: 10px;
-      background: transparent;
-      color: white;
-      margin-bottom: 15px;
-      width: 80%;
-      max-width: 300px;
-      z-index: 1;
-    }
-    #password-overlay button {
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: white;
-      background: red;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 0 10px red;
-      transition: 0.3s;
-      z-index: 1;
-      width: 150px;
-    }
-    #password-overlay button:hover {
-      background: darkred;
-      box-shadow: 0 0 20px red;
-    }
+  h1 {
+    margin-top: 40px;
+    font-size: 3rem;
+    text-shadow: 2px 2px 8px red;
+  }
 
-    h1 {
-      font-size: 3rem;
-      margin-top: 20px;
-      text-shadow: 2px 2px 8px red;
-      position: relative;
-      z-index: 2;
-    }
+  /* ---------------- TIENDA ---------------- */
+  .tienda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 10px;
+    margin-top: 20px;
+  }
 
-    p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      font-weight: bold;
-      position: relative;
-      z-index: 2;
-    }
+  .producto-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid red;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0 0 15px red;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
 
-    .socials {
-      margin-top: 20px;
-      position: relative;
-      z-index: 2;
-    }
+  .producto-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px red, 0 0 60px rgba(255,0,0,0.8);
+  }
 
-    .socials a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      border-radius: 12px;
-      color: white;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      font-family: "Courier New", monospace;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 0 8px rgba(255,255,255,0.3);
-    }
+  .producto-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid red;
+  }
 
-    .socials a i { margin-right: 8px; font-size: 1.3rem; }
-    .socials a:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 15px rgba(255,255,255,0.7), 0 0 25px currentColor;
-    }
-    .socials a.spotify { background: #1DB954; }
-    .socials a.steam { background: #171A21; }
-    .socials a.roblox { background: #FF4757; }
-    .socials a.discord { background: #5865F2; }
+  .producto-info {
+    padding: 20px;
+  }
 
-    .music-btn {
-      margin: 30px auto 20px;
-      padding: 10px 20px;
-      border: 2px solid white;
-      border-radius: 10px;
-      background: transparent;
-      color: white;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      z-index: 2;
-      display: block;
-      width: fit-content;
-    }
-    .music-btn i { margin-right: 8px; }
-    .music-btn:hover { transform: scale(1.05); }
-    .music-btn:active { transform: scale(0.98); }
+  .producto-info h3 {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
 
-    .music-btn.paused {
-      background: transparent;
-      border-color: white;
-      color: white;
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    }
-    .music-btn.paused:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #ccc;
-    }
+  .producto-info p {
+    font-size: 0.95rem;
+    color: #ddd;
+    margin-bottom: 8px;
+    text-align: left;
+  }
 
-    .music-btn.playing {
-      background: red;
-      border-color: red;
-      color: white;
-      box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8);
-      animation: pulse 1.5s infinite alternate;
-    }
-    .music-btn.playing:hover {
-      background: darkred;
-      border-color: darkred;
-      box-shadow: 0 0 15px red, 0 0 30px rgba(255, 0, 0, 1);
-    }
+  .producto-precio {
+    color: #00ffcc;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
 
-    @keyframes pulse {
-      from { box-shadow: 0 0 10px red, 0 0 20px rgba(255, 0, 0, 0.8); transform: scale(1); }
-      to { box-shadow: 0 0 20px red, 0 0 40px rgba(255, 0, 0, 1); transform: scale(1.02); }
-    }
+  .botones-producto {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
 
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      gap: 20px;
-      margin-top: 40px;
-    }
+  .boton-aporte, .boton-ticket {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    width: 48%;
+    text-align: center;
+  }
 
-    .staff-col {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-    .card {
-      background: #111;
-      padding: 15px;
-      border-radius: 12px;
-      width: 150px;
-      text-align: center;
-      box-shadow: 0 0 10px red, 0 0 20px rgba(255,0,0,0.6);
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      from { box-shadow: 0 0 10px red; }
-      to { box-shadow: 0 0 25px red, 0 0 50px rgba(255,0,0,0.9); }
-    }
-    .card img {
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      margin-bottom: 8px;
-      border: 2px solid red;
-    }
-    .card .role { font-size: 13px; color: #bbb; }
+  .boton-aporte {
+    background: red;
+    box-shadow: 0 0 10px red;
+  }
+  .boton-aporte:hover {
+    background: darkred;
+    box-shadow: 0 0 20px red;
+  }
 
-    .aporte {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 30px;
-      border-radius: 15px;
-      margin-bottom: 40px;
-      border: 2px solid red;
-      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red, 0 0 60px rgba(255, 0, 0, 0.8);
-      transition: 0.3s;
-      position: relative;
-      z-index: 2;
-      line-height: 1.8;
-      letter-spacing: 0.5px;
-      text-align: left;
-    }
-    .aporte:hover {
-      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 80px red, 0 0 100px rgba(255, 0, 0, 1);
-    }
-    .aporte h2 {
-      font-size: 2rem;
-      color: red;
-      margin-bottom: 15px;
-      text-align: center;
-    }
+  .boton-ticket {
+    background: #5865F2;
+    box-shadow: 0 0 10px #5865F2;
+  }
+  .boton-ticket:hover {
+    background: #3a48c7;
+    box-shadow: 0 0 20px #5865F2;
+  }
 
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-    }
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
+    font-size: 0.9rem;
+  }
 
-    .download-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: red;
-      color: white;
-      font-weight: bold;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: 0.3s;
-      box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px rgba(255, 0, 0, 0.8);
-    }
-    .download-btn:hover {
-      background: darkred;
-      box-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red;
-    }
-
-    @media (max-width: 768px) {
-      .layout { display: block; }
-      .staff-col {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 15px;
-        padding: 10px;
-        scroll-snap-type: x mandatory;
-      }
-      .card {
-        flex: 0 0 auto;
-        width: 130px;
-        scroll-snap-align: start;
-      }
-      #password-overlay input {
-        width: 70%;
-        max-width: 250px;
-      }
-      #password-overlay button {
-        width: 120px;
-      }
-    }
-
-    .sharingan-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      z-index: 1000;
-      outline: none;
-      border: none;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
-    }
-    .sharingan-btn img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      animation: spin 4s linear infinite, glowWhiteRed 1.5s infinite alternate;
-      filter: brightness(1.5) contrast(1.5);
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes glowWhiteRed {
-      from { box-shadow: 0 0 5px white, 0 0 10px red; }
-      to { box-shadow: 0 0 20px white, 0 0 40px red; }
-    }
-
-    #sharingan-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.6s;
-    }
-    #sharingan-overlay img {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      image-rendering: pixelated;
-      filter: brightness(1.5) sepia(0.2) hue-rotate(0deg);
-    }
-    #sharingan-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <!-- Overlay de contraseña inicial -->
-  <div id="password-overlay">
-    <div class="blocker"></div>
-    <div class="content-wrapper">
-      <div class="content">
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VjcXMzdmR5bTc4b3RpN3FmeGlrd3M3ZzltNjY4bmY0c2F2MmtnYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" id="password-img" alt="Intro GIF">
-        <p>Si tienes el rol Padrino en el servidor de Injertos, sabes la contraseña. Ingresa la contraseña</p>
-        <input type="password" id="pass-input" placeholder="Contraseña">
-        <button onclick="checkPassword()">Entrar</button>
+
+<h1>🛒 TIENDA DE APORTES EXCLUSIVOS</h1>
+<p style="font-weight:bold;">Aportes exclusivos para el servidor SAMP | Injertos Mods</p>
+
+<!-- SECCIÓN TIENDA -->
+<div class="tienda">
+  <!-- PRODUCTO 1 -->
+  <div class="producto-card">
+    <img src="https://i.imgur.com/ZjKXj0O.jpeg" alt="Vehículo Mod">
+    <div class="producto-info">
+      <h3>Pack de Autos HD</h3>
+      <p><b>Autor:</b> Hilnzo</p>
+      <p><b>Incluye:</b> 10 vehículos modificados + efectos de escape.</p>
+      <p><b>Versión:</b> SAMP 0.3.7 / 0.3DL</p>
+      <div class="producto-precio">$5.00 USD</div>
+      <div class="botones-producto">
+        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
       </div>
     </div>
   </div>
 
-  <h1>APORTES EXCLUSIVOS</h1>
-  <p>"PROXIMAMENTE"</p>
-
-  <div class="socials">
-    <a href="https://open.spotify.com/user/31mtjz2i5m63xek4cp4pevznd74i" target="_blank" class="spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
-    <a href="https://steamcommunity.com/profiles/76561199805784382/" target="_blank" class="steam"><i class="fa-brands fa-steam"></i> Steam</a>
-    <a href="https://www.roblox.com/es/users/9207271059/profile" target="_blank" class="roblox"><i class="fa-solid fa-cube"></i> Roblox</a>
-    <a href="https://discordapp.com/users/1298301131641983019" target="_blank" class="discord"><i class="fa-brands fa-discord"></i> Discord</a>
-    <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="discord" style="margin-top:15px; display:inline-block;"><i class="fa-brands fa-discord"></i> DC - INJERTOS MODS</a>
-  </div>
-
-  <audio id="bg-music" loop>
-    <source src="https://files.catbox.moe/0sxa7b.mp3" type="audio/mpeg">
-  </audio>
-  <button class="music-btn paused" id="musicToggle" onclick="toggleMusic()"><i class="fa-solid fa-play"></i> Música Apagada</button>
-
-  <div class="layout">
-    <div class="staff-col">
-      <div class="card"><img src="https://cdn.discordapp.com/guilds/1387892493860999319/users/1298301131641983019/avatars/a_1e3d8f261e5560ab8bec9d9277b77f0d.gif"><p><b>HILNZO</b></p><p class="role">DUEÑO</p></div>  
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1354865570880946176/e96aa5f50a9f936310cdbdf367077c66.png"><p><b>KALCOR</b></p><p class="role">DUEÑO</p></div>  
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1246355878840631327/2c0846a264c2af5eede51ab3aa0fc3cb.png"><p><b>KAIROX</b></p><p class="role">DUEÑO</p></div>  
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1221849688593137830/9df3e244543051e16ccb8cdab9a851c0.png"><p><b>JACOB</b></p><p class="role">DUEÑO</p></div>
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1260353622001188875/aa9c8431623d1958d02e42f4f026efe3.png"><p><b>Maik</b></p><p class="role">DUEÑO</p></div>  
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1414075135350280234/130abfb9d053bbd548d6d5e30e8bb436.png"><p><b>MANZER</b></p><p class="role">DUEÑO</p></div>
-    </div>
-
-    <div id="aportes">
-      <div class="aporte">
-        <h2>PROXIMAMENTE</h2>
-        <p><b>DESCRITPCION:</b>***.</p>
-        <p><b>CREADOR:</b>***</p>
-        <p><b>INCLUYE:</b>***</p>
-        <p><b>CONTRASEÑA:</b> <span style="color: red; font-weight: bold;">***</span></p>
-        <div class="video-wrapper">
-          <iframe id="ytplayer-1" 
-                  src="https://www.youtube.com/embed/PY9v8G8cIxo?enablejsapi=1"
-                  frameborder="0" 
-                  allow="autoplay; encrypted-media"
-                  allowfullscreen></iframe>
-        </div>
-        <a href="https://www.mediafire.com/file/xxxxxx/Aporte_Plantilla2.rar/file" target="_blank" class="download-btn">⬇ DESCARGAR APORTE</a>
+  <!-- PRODUCTO 2 -->
+  <div class="producto-card">
+    <img src="https://i.imgur.com/Y3hth0O.jpeg" alt="Base Mapping">
+    <div class="producto-info">
+      <h3>Base Mapeada Premium</h3>
+      <p><b>Autor:</b> KAIROX</p>
+      <p><b>Incluye:</b> Base Roleplay moderna + iluminación + texturas HD.</p>
+      <p><b>Compatibilidad:</b> SAMP 0.3DL</p>
+      <div class="producto-precio">$8.00 USD</div>
+      <div class="botones-producto">
+        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
       </div>
     </div>
+  </div>
 
-    <div class="staff-col">
-      <div class="card"><img src="https://cdn.discordapp.com/avatars/1000966605729181847/9de61981cbe4d9ba985aace659cec1ef.png"><p><b>Raul</b></p><p class="role">SUB ENCARGADO</p></div>  
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1386421165052002366/ad60538bd141ab74a7029f32a0288fc2.png"><p><b>Snow</b></p><p class="role">ADMIN</p></div>
-        <div class="card"><img src="https://cdn.discordapp.com/avatars/1297359221280739389/0c8e21345db6f35f607546e0dcbf4295.png"><p><b>Yerlin</b></p><p class="role">JUNIOR ADMIN</p></div>        
-         <div class="card"><img src="https://cdn.discordapp.com/avatars/1353440531148967986/393b0314da66e5e32b3bc9f33c43e8d7.png"><p><b>Jose</b></p><p class="role">HEAD MODERADOR</p></div>
-         <div class="card"><img src="https://cdn.discordapp.com/avatars/1337927773884252282/f6433e79a7c03c34010f47ac57a148d7.png"><p><b>Kenne</b></p><p class="role">MODERADOR</p></div>
+  <!-- PRODUCTO 3 -->
+  <div class="producto-card">
+    <img src="https://i.imgur.com/XfUBTdc.jpeg" alt="Script System">
+    <div class="producto-info">
+      <h3>Sistema de Trabajo (JOB)</h3>
+      <p><b>Autor:</b> Manzer</p>
+      <p><b>Incluye:</b> Script con UI personalizada y guardado MySQL.</p>
+      <p><b>Lenguaje:</b> Pawn</p>
+      <div class="producto-precio">$10.00 USD</div>
+      <div class="botones-producto">
+        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="sharingan-btn" onclick="activarSharingan()">
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VjcXMzdmR5bTc4b3RpN3FmeGlrd3M3ZzltNjY4bmY0c2F2MmtnYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AD9YKaY2vxTXO/giphy.gif" alt="Sharingan">
-  </div>
+<footer>
+  <p>© 2025 Injertos Mods | Todos los derechos reservados. | Diseñado por Hilnzo</p>
+</footer>
 
-  <div id="sharingan-overlay" onclick="cerrarSharingan()">
-    <img src="https://i.pinimg.com/originals/44/9c/17/449c175588d56442fd162990ac428759.gif" alt="Sharingan Efecto">
-  </div>
-
-  <audio id="sharingan-sound">
-    <source src="https://files.catbox.moe/4dxgfn.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    // Verificación de contraseña
-    function checkPassword() {
-      const pass = document.getElementById('pass-input').value;
-      const correctPass = 'padrinosog'; // Cambia esta contraseña por la del rol Padrino
-      const overlay = document.getElementById('password-overlay');
-      const img = document.getElementById('password-img');
-      const p = overlay.querySelector('p');
-      const music = document.getElementById('bg-music');
-      const btn = document.getElementById('musicToggle');
-
-      if (pass === correctPass) {
-        overlay.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restaura el scroll
-        music.play().catch(() => {});
-        btn.classList.remove('paused');
-        btn.classList.add('playing');
-        btn.innerHTML = '<i class="fa-solid fa-pause"></i> Música Encendida';
-      } else {
-        const errorGifUrl = 'https://i.imgur.com/SHpvy8p.gif'; // Reemplaza con tu enlace directo de Imgur
-        img.src = errorGifUrl;
-        img.style.display = 'none';
-        img.style.display = 'block'; // Fuerza recarga visual
-        img.onload = () => console.log('GIF de error cargado: ', errorGifUrl);
-        img.onerror = () => {
-          console.log('Error al cargar el GIF de error, usando fallback.');
-          img.src = 'https://via.placeholder.com/400x300/000/fff?text=Error+cargando+GIF';
-        };
-        p.textContent = 'No es la contraseña, compay. Mejor boostea el servidor de Discord y consigue la contraseña';
-        document.getElementById('pass-input').value = '';
-      }
-    }
-
-    // Toggle música
-    function toggleMusic() {
-      const music = document.getElementById('bg-music');
-      const btn = document.getElementById('musicToggle');
-      if (music.paused) {
-        music.play();
-        btn.classList.remove('paused');
-        btn.classList.add('playing');
-        btn.innerHTML = '<i class="fa-solid fa-pause"></i> Música Encendida';
-      } else {
-        music.pause();
-        btn.classList.remove('playing');
-        btn.classList.add('paused');
-        btn.innerHTML = '<i class="fa-solid fa-play"></i> Música Apagada';
-      }
-    }
-
-    // YouTube API
-    function onYouTubeIframeAPIReady() {
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach((iframe, i) => {
-        if (!iframe.src || iframe.src.indexOf('youtube.com/embed') === -1) return;
-        if (!iframe.id) iframe.id = 'ytplayer-' + i;
-        new YT.Player(iframe.id, {
-          events: {
-            'onStateChange': function(event) {
-              const music = document.getElementById('bg-music');
-              const btn = document.getElementById('musicToggle');
-              if (event.data === YT.PlayerState.PLAYING) {
-                try { music.pause(); } catch (e) {}
-                btn.classList.remove('playing');
-                btn.classList.add('paused');
-                btn.innerHTML = '<i class="fa-solid fa-play"></i> Música Apagada';
-              }
-            }
-          }
-        });
-      });
-    }
-
-    (function loadYT() {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.body.appendChild(tag);
-    })();
-
-    // Activación Sharingan
-    function activarSharingan() {
-      const overlay = document.getElementById('sharingan-overlay');
-      const sound = document.getElementById('sharingan-sound');
-      const bg = document.getElementById('bg-music');
-
-      overlay.classList.add('active');
-      sound.currentTime = 0;
-      sound.play().catch(() => {});
-
-      sessionStorage.setItem('showBgMusic', 'true');
-      try { if (bg && !bg.paused) bg.pause(); } catch (e) {}
-
-      setTimeout(() => {
-        sessionStorage.setItem('sharinganActivo', 'true');
-        window.location.href = 'https://discord.gg/FfdkshS5ye';
-      }, 3000);
-    }
-
-    // Cierre Sharingan
-    function cerrarSharingan() {
-      const overlay = document.getElementById('sharingan-overlay');
-      overlay.classList.remove('active');
-    }
-
-    // Cargar estado inicial
-    window.addEventListener('load', () => {
-      document.body.style.overflow = 'hidden'; // Bloquea el scroll al cargar
-      if (sessionStorage.getItem('sharinganActivo')) {
-        cerrarSharingan();
-        sessionStorage.removeItem('sharinganActivo');
-      }
-    });
-  </script>
 </body>
-  </html>
+</html>
