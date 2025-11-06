@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INJERTOS MODS STORE</title>
+
+  <!-- Precarga la imagen de fondo para evitar parpadeo -->
+  <link rel="preload" as="image" href="https://files.catbox.moe/dfmf63.png">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
@@ -26,8 +30,19 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: url('https://files.catbox.moe/dfmf63.png') no-repeat center center;
+
+      /* Fondo optimizado */
+      background-color: #0a0a0a;
+      background-image: url('https://files.catbox.moe/dfmf63.png');
+      background-repeat: no-repeat;
+      background-position: center;
       background-size: cover;
+
+      /* Evita microparpadeos en Android/PC */
+      will-change: opacity, background-image;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+
       z-index: 9999;
     }
     #welcome-screen h1 {
@@ -90,6 +105,7 @@
       background-size: cover;
       filter: blur(6px) brightness(0.4);
       z-index: -1;
+      will-change: filter, background-image;
     }
 
     /* --- PANEL STAFF --- */
@@ -241,19 +257,9 @@
       z-index: 1000;
       box-shadow: 0 0 15px rgba(255,0,0,0.4);
     }
-    #music-controls input[type="range"] {
-      width: 80px;
-    }
-    #music-controls button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    #music-controls button:hover {
-      color: #ff0000;
-    }
+    #music-controls input[type="range"] { width: 80px; }
+    #music-controls button { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+    #music-controls button:hover { color: #ff0000; }
 
     /* --- NOTIFICACIONES --- */
     .toast {
@@ -276,9 +282,7 @@
       .store-content { width: 100%; }
       .aportes { flex-direction: column; gap: 20px; }
       .aporte-card { width: 100%; }
-      #music-controls {
-        right: 50%; transform: translateX(50%);
-      }
+      #music-controls { right: 50%; transform: translateX(50%); }
     }
   </style>
 </head>
@@ -343,6 +347,10 @@
   </div>
 
   <script>
+    // Precarga extra para dispositivos lentos
+    const preloadBg = new Image();
+    preloadBg.src = "https://files.catbox.moe/dfmf63.png";
+
     const btn = document.getElementById('enter-btn');
     const welcome = document.getElementById('welcome-screen');
     const store = document.getElementById('store');
@@ -367,7 +375,7 @@
       }, 40);
     }
 
-    /* --- CONTROLES DE MÚSICA --- */
+    // Controles música
     const playPauseBtn = document.getElementById('play-pause');
     const volumeControl = document.getElementById('volume');
 
@@ -384,7 +392,7 @@
     };
     volumeControl.oninput = e => music.volume = e.target.value;
 
-    /* --- BUSCADOR Y FILTROS --- */
+    // Buscador y filtros
     const searchInput = document.getElementById('search-input');
     const filterCategory = document.getElementById('filter-category');
     const cards = document.querySelectorAll('.aporte-card');
@@ -395,15 +403,13 @@
       cards.forEach(card => {
         const name = card.querySelector('p b').textContent.toLowerCase();
         const matchCategory = category === "all" || card.dataset.category === category;
-        if (name.includes(term) && matchCategory) card.style.display = "flex";
-        else card.style.display = "none";
+        card.style.display = (name.includes(term) && matchCategory) ? "flex" : "none";
       });
     }
-
     searchInput.addEventListener('input', filterMods);
     filterCategory.addEventListener('change', filterMods);
 
-    /* --- TOAST / NOTIFICACIONES --- */
+    // Toast
     function showToast(msg) {
       const toast = document.createElement('div');
       toast.textContent = msg;
@@ -412,7 +418,7 @@
       setTimeout(() => toast.remove(), 3000);
     }
 
-    /* --- PARTICULAS --- */
+    // Partículas
     particlesJS("particles-js", {
       "particles": {
         "number": { "value": 60 },
@@ -430,3 +436,4 @@
   </script>
 </body>
 </html>
+
