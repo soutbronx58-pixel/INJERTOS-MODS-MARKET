@@ -50,4 +50,223 @@
   }
 
   #entrada button:hover {
-    backgr
+    background: darkred;
+    box-shadow: 0 0 25px red;
+  }
+
+  /* ---------------- REDES SOCIALES FLOTANTES ---------------- */
+  .redes-flotantes {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  .redes-flotantes a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    border-radius: 0 25px 25px 0;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: 0.3s;
+  }
+
+  .redes-flotantes a:hover {
+    background: red;
+  }
+
+  /* ---------------- TIENDA ---------------- */
+  .tienda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 10px;
+    margin-top: 20px;
+  }
+
+  .producto-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid red;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0 0 15px red;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+
+  .producto-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px red, 0 0 60px rgba(255,0,0,0.8);
+  }
+
+  .producto-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid red;
+  }
+
+  .producto-info {
+    padding: 20px;
+  }
+
+  .producto-info h3 {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+  .producto-info p {
+    font-size: 0.95rem;
+    color: #ddd;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  .producto-precio {
+    color: #00ffcc;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  .botones-producto {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .boton-aporte, .boton-ticket {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    width: 48%;
+    text-align: center;
+  }
+
+  .boton-aporte {
+    background: red;
+    box-shadow: 0 0 10px red;
+  }
+  .boton-aporte:hover {
+    background: darkred;
+    box-shadow: 0 0 20px red;
+  }
+
+  .boton-ticket {
+    background: #5865F2;
+    box-shadow: 0 0 10px #5865F2;
+  }
+  .boton-ticket:hover {
+    background: #3a48c7;
+    box-shadow: 0 0 20px #5865F2;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
+    font-size: 0.9rem;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- PANTALLA DE ENTRADA -->
+<div id="entrada">
+  <h1>INGRESAR</h1>
+  <button onclick="entrar()">Ingresar</button>
+</div>
+
+<!-- REDES SOCIALES FLOTANTES -->
+<div class="redes-flotantes">
+  <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+  <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+  <a href="https://www.tiktok.com/" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+</div>
+
+<!-- TIENDA -->
+<h1>🛒 TIENDA DE APORTES EXCLUSIVOS</h1>
+<p style="font-weight:bold;">Aportes exclusivos para el servidor SAMP | Injertos Mods</p>
+
+<div class="tienda">
+  <div class="producto-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYQzDL9hIlPewUCbpi1JGS2SaMdwV4zznew&s" alt="Vehículo Mod">
+    <div class="producto-info">
+      <h3>OPTIMIZACIÓN</h3>
+      <p><b>Autor:</b> INJERTOS MODS</p>
+      <p><b>Incluye:</b> Archivos y programas actualizados.</p>
+      <p><b>Versión:</b> Mínimo 4GB de RAM.</p>
+      <div class="producto-precio">$2.00 USD</div>
+      <div class="botones-producto">
+        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="producto-card">
+    <img src="https://i.imgur.com/Y3hth0O.jpeg" alt="Base Mapping">
+    <div class="producto-info">
+      <h3>Base Mapeada Premium</h3>
+      <p><b>Autor:</b> KAIROX</p>
+      <p><b>Incluye:</b> Base Roleplay moderna + iluminación + texturas HD.</p>
+      <p><b>Compatibilidad:</b> SAMP 0.3DL</p>
+      <div class="producto-precio">$8.00 USD</div>
+      <div class="botones-producto">
+        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="producto-card">
+    <img src="https://i.imgur.com/XfUBTdc.jpeg" alt="Script System">
+    <div class="producto-info">
+      <h3>Sistema de Trabajo (JOB)</h3>
+      <p><b>Autor:</b> Manzer</p>
+      <p><b>Incluye:</b> Script con UI personalizada y guardado MySQL.</p>
+      <p><b>Lenguaje:</b> Pawn</p>
+      <div class="producto-precio">$10.00 USD</div>
+      <div class="botones-producto">
+        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Injertos Mods | Todos los derechos reservados. | Diseñado por Piero Quispe</p>
+</footer>
+
+<!-- MÚSICA -->
+<audio id="musica" src="https://files.catbox.moe/1wqadc.mp3" loop></audio>
+
+<script>
+  function entrar() {
+    document.getElementById('entrada').style.display = 'none';
+    document.body.style.background = "url('https://cdn.pixabay.com/photo/2016/10/27/22/49/halloween-1778836_1280.jpg') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+    document.getElementById('musica').play();
+  }
+</script>
+
+</body>
+</html>
