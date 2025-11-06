@@ -72,36 +72,44 @@
       z-index: -1;
     }
 
-    /* Panel STAFF */
+    /* Panel STAFF con efecto rojo */
     .staff-panel {
       width: 250px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 0, 0, 0.05);
+      border: 1px solid rgba(255, 0, 0, 0.4);
       border-radius: 12px;
       padding: 20px;
       text-align: left;
       backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
     }
     .staff-panel h2 {
       text-align: center;
       margin-bottom: 20px;
-      text-shadow: 0 0 8px white;
+      text-shadow: 0 0 12px red;
+      color: #ff3b3b;
     }
     .staff-member {
       display: flex;
       align-items: center;
       margin-bottom: 15px;
       gap: 10px;
+      transition: 0.3s;
+    }
+    .staff-member:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px red inset, 0 0 15px red;
     }
     .staff-member img {
       width: 45px;
       height: 45px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,0,0,0.3);
     }
     .staff-info {
       font-size: 0.9rem;
+      color: #ff9999;
     }
 
     /* Tienda */
@@ -111,8 +119,14 @@
     }
     .store-content h1 {
       font-size: 2rem;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       text-shadow: 0 0 10px white;
+    }
+    .store-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: #ff4c4c; 
+      text-shadow: 0 0 8px red;
     }
     .aportes {
       display: flex;
@@ -251,6 +265,7 @@
 
     <div class="store-content">
       <h1>EN MANTENIMIENTO</h1>
+      <h2 id="store-subtitle">¡Próximamente nuevos mods y packs!</h2>
       <div class="aportes">
 
         <div class="aporte-card">
