@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>INJERTOS MODS STORE</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -125,6 +125,39 @@
       margin-bottom: 10px;
     }
 
+    /* Botones "Comprar" y "Ticket" */
+    .aporte-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .btn {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+    .comprar-btn {
+      background-color: #ff0033;
+      color: white;
+    }
+    .comprar-btn:hover {
+      background-color: #e6002a;
+    }
+    .ticket-btn {
+      background-color: #222;
+      color: white;
+      border: 2px solid #ff0033;
+    }
+    .ticket-btn:hover {
+      background-color: #ff0033;
+      color: white;
+    }
+
     /* Redes sociales */
     .social-icons {
       position: fixed;
@@ -159,20 +192,20 @@
     <div class="staff-panel">
       <h2>STAFF DISCORD</h2>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/wfaxti.png">
+        <img src="https://files.catbox.moe/wfaxti.png" />
         <div class="staff-info"><b>Piero Quispe</b><br>Owner</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/ptvp3v.gif">
+        <img src="https://files.catbox.moe/ptvp3v.gif" />
         <div class="staff-info"><b>Hilnzo</b><br>Owner</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/56uipq.png">
+        <img src="https://files.catbox.moe/56uipq.png" />
         <div class="staff-info"><b>Kalcor</b><br>Owner</div>
       </div>
-       <div class="staff-member">
-       <img src="https://files.catbox.moe/cyjpv1.png">
-       <div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div>
+      <div class="staff-member">
+        <img src="https://files.catbox.moe/cyjpv1.png" />
+        <div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div>
       </div>
     </div>
 
@@ -180,14 +213,22 @@
       <h1>EN MANTENIMIENTO</h1>
       <div class="aportes">
         <div class="aporte-card">
-          <img src="https://files.catbox.moe/utloti.png">
+          <img src="https://files.catbox.moe/utloti.png" />
           <p><b>Aporte Slix</b></p>
           <p>Mods optimizados, armas y efectos.</p>
+          <div class="aporte-buttons">
+            <button class="btn comprar-btn">Comprar</button>
+            <button class="btn ticket-btn">Ticket</button>
+          </div>
         </div>
         <div class="aporte-card">
-          <img src="https://files.catbox.moe/mldvwx.png">
+          <img src="https://files.catbox.moe/mldvwx.png" />
           <p><b>Pack Armas HD</b></p>
           <p>Armas 3D realistas con efectos.</p>
+          <div class="aporte-buttons">
+            <button class="btn comprar-btn">Comprar</button>
+            <button class="btn ticket-btn">Ticket</button>
+          </div>
         </div>
       </div>
     </div>
