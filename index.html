@@ -16,7 +16,6 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* Pantalla de bienvenida */
     #welcome-screen {
       position: fixed;
       top: 0; left: 0;
@@ -49,7 +48,6 @@
       transform: scale(1.05);
     }
 
-    /* Contenedor principal */
     #store {
       display: none; 
       padding: 40px 20px;
@@ -72,7 +70,6 @@
       z-index: -1;
     }
 
-    /* Panel STAFF */
     .staff-panel {
       width: 250px;
       background: rgba(255, 0, 0, 0.05);
@@ -107,35 +104,16 @@
       object-fit: cover;
       border: 1px solid rgba(255,0,0,0.3);
     }
-    .staff-info {
-      font-size: 0.9rem;
-      color: #ff9999;
-    }
+    .staff-info { font-size: 0.9rem; color: #ff9999; }
 
-    /* Tienda */
     .store-content {
       flex: 1;
       max-width: 1000px;
     }
-    .store-content h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px white;
-    }
-    .store-content h2 {
-      font-size: 1.5rem;
-      margin-bottom: 25px;
-      color: #ff4c4c; 
-      text-shadow: 0 0 8px red;
-    }
-    .aportes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
+    .store-content h1 { font-size: 2rem; margin-bottom: 10px; text-shadow: 0 0 10px white; }
+    .store-content h2 { font-size: 1.5rem; margin-bottom: 25px; color: #ff4c4c; text-shadow: 0 0 8px red; }
+    .aportes { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
 
-    /* Tarjetas de aportes */
     .aporte-card {
       width: 340px;
       background: rgba(255, 255, 255, 0.08);
@@ -149,42 +127,23 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.08), inset 0 0 15px rgba(0, 0, 0, 0.5);
     }
-    .aporte-card:hover {
-      transform: scale(1.07);
-      border-color: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), inset 0 0 25px rgba(0, 0, 0, 0.7);
-    }
-    .aporte-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      transition: 0.3s;
-    }
-    .aporte-card p {
-      font-size: 1.1rem;
-      margin: 5px 0;
-    }
-    .aporte-buttons {
-      margin-top: 15px;
-      display: flex;
-      gap: 12px;
-      width: 100%;
-      justify-content: center;
-    }
+    .aporte-card:hover { transform: scale(1.07); border-color: rgba(255,255,255,0.7); box-shadow: 0 0 30px rgba(255,255,255,0.4), inset 0 0 25px rgba(0,0,0,0.7); }
+    .aporte-card img { width: 100%; border-radius: 12px; margin-bottom: 12px; transition: 0.3s; }
+    .aporte-card p { font-size: 1.1rem; margin: 5px 0; }
+
+    .aporte-buttons { margin-top: 15px; display: flex; gap: 12px; width: 100%; justify-content: center; }
     .aporte-buttons a {
       flex: 1;
       padding: 12px;
       border-radius: 8px;
       font-weight: bold;
       text-align: center;
-      transition: 0.2s;
+      transition: 0.3s;
+      background: linear-gradient(145deg, #000000, #ff0000);
+      color: white;
     }
-    .comprar-btn { background: linear-gradient(145deg, #fff, #000); color: #111; }
-    .comprar-btn:hover { background: linear-gradient(145deg, #e0e0e0, #111); color: white; }
-    .ticket-btn { background: linear-gradient(145deg, #000, #fff); color: white; }
-    .ticket-btn:hover { background: linear-gradient(145deg, #222, #ccc); color: black; }
+    .aporte-buttons a:hover { background: linear-gradient(145deg, #ff0000, #000000); color: #fff; transform: scale(1.05); }
 
-    /* Redes sociales */
     .social-icons {
       position: fixed;
       top: 50%;
@@ -203,9 +162,8 @@
       border-radius: 8px 0 0 8px;
       transition: 0.3s;
     }
-    .social-icons a:hover { background: white; color: black; }
+    .social-icons a:hover { background: #ff0000; color: white; }
 
-    /* Contador de visitas */
     #visit-counter {
       position: fixed;
       bottom: 15px;
@@ -224,7 +182,6 @@
       z-index: 9999;
     }
 
-    /* Responsivo */
     @media (max-width: 768px) {
       #store { flex-direction: column; padding: 20px 10px; gap: 20px; }
       .staff-panel { width: 90%; margin: 0 auto; }
@@ -247,30 +204,12 @@
   <div id="store">
     <div class="staff-panel">
       <h2>STAFF DISCORD</h2>
-      <div class="staff-member">
-        <img src="https://files.catbox.moe/wfaxti.png" alt="Piero Quispe">
-        <div class="staff-info"><b>Piero Quispe</b><br>Owner</div>
-      </div>
-      <div class="staff-member">
-        <img src="https://files.catbox.moe/ptvp3v.gif" alt="Hilnzo">
-        <div class="staff-info"><b>Hilnzo</b><br>Owner</div>
-      </div>
-      <div class="staff-member">
-        <img src="https://files.catbox.moe/56uipq.png" alt="Kalcor">
-        <div class="staff-info"><b>Kalcor</b><br>Owner</div>
-      </div>
-      <div class="staff-member">
-        <img src="https://files.catbox.moe/cyjpv1.png" alt="Kairox">
-        <div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div>
-      </div>
-      <div class="staff-member">
-        <img src="https://files.catbox.moe/kf4km5.png" alt="Manzer">
-        <div class="staff-info"><b>Manzer</b><br>Kachudo</div>
-      </div>
-      <div class="staff-member">
-        <img src="https://files.catbox.moe/0l8iwx.png" alt="EL HAITIANO">
-        <div class="staff-info"><b>EL HAITIANO</b><br>singatumadre</div>
-      </div>
+      <div class="staff-member"><img src="https://files.catbox.moe/wfaxti.png" alt="Piero Quispe"><div class="staff-info"><b>Piero Quispe</b><br>Owner</div></div>
+      <div class="staff-member"><img src="https://files.catbox.moe/ptvp3v.gif" alt="Hilnzo"><div class="staff-info"><b>Hilnzo</b><br>Owner</div></div>
+      <div class="staff-member"><img src="https://files.catbox.moe/56uipq.png" alt="Kalcor"><div class="staff-info"><b>Kalcor</b><br>Owner</div></div>
+      <div class="staff-member"><img src="https://files.catbox.moe/cyjpv1.png" alt="Kairox"><div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div></div>
+      <div class="staff-member"><img src="https://files.catbox.moe/kf4km5.png" alt="Manzer"><div class="staff-info"><b>Manzer</b><br>Kachudo</div></div>
+      <div class="staff-member"><img src="https://files.catbox.moe/0l8iwx.png" alt="EL HAITIANO"><div class="staff-info"><b>EL HAITIANO</b><br>singatumadre</div></div>
     </div>
 
     <div class="store-content">
@@ -286,7 +225,6 @@
             <a href="#" class="ticket-btn">Ticket</a>
           </div>
         </div>
-
         <div class="aporte-card">
           <img src="https://files.catbox.moe/mldvwx.png" alt="Pack Armas HD" loading="lazy">
           <p><b>Pack Armas HD</b></p>
@@ -303,9 +241,9 @@
   <div id="visit-counter">👁️ Visitas: <span id="count">0</span></div>
 
   <div class="social-icons">
-    <a href="#"><i class="fab fa-discord"></i></a>
-    <a href="#"><i class="fab fa-youtube"></i></a>
-    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <a href="https://discord.gg/TUINVITACION" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://www.youtube.com/channel/TU_CANAL" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
   </div>
 
   <script>
@@ -316,7 +254,6 @@
     const counterBox = document.getElementById('visit-counter');
     const counterNum = document.getElementById('count');
 
-    // Contador de visitas (LocalStorage)
     let visits = localStorage.getItem('visitCount') || 0;
     visits = parseInt(visits) + 1;
     localStorage.setItem('visitCount', visits);
@@ -327,7 +264,6 @@
       counterBox.style.display = 'block';
       counterNum.textContent = visits;
 
-      // Intentar reproducir música
       music.volume = 0.6;
       music.play().catch(() => {
         const notice = document.createElement('div');
