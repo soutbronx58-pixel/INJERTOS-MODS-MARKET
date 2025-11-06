@@ -3,151 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INJERTOS MODS - Tienda de Aportes</title>
+  <title>INJERTOS MODS VENTAS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* --- Reset --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Arial', sans-serif; background: #0d0d0d; color: white; text-align: center; line-height: 1.6; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #121212;
+      color: white;
+      text-align: center;
+    }
 
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
 
     /* --- Pantalla de bienvenida --- */
     #welcome-screen {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, #ff0033, #ff9900);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      z-index: 10;
-      transition: opacity 0.5s ease;
+      background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXBtNTF4Z3p6OXZ2Nng2N3QwODFsMmgwOGoxMnhpcjZuZGgwbXJqYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/w0YROIlXXXl5k0yyvW/200.webp') no-repeat center center;
+      background-size: cover;
+      z-index: 1000;
     }
-    #welcome-screen h1 { font-size: 3rem; margin-bottom: 20px; }
-    #btn-ingresar {
-      padding: 20px 50px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      background: #1DB954;
-      color: white;
+    #welcome-screen h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px black;
+    }
+    #enter-btn {
+      padding: 15px 40px;
+      font-size: 1.2rem;
       border: none;
       border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
       cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    #btn-ingresar:hover { transform: scale(1.05); background: #17a444; }
-
-    /* --- Header --- */
-    header {
-      padding: 50px 20px 30px;
-      background: linear-gradient(135deg, #ff0033, #ff9900);
-      color: white;
+    #enter-btn:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 1);
     }
-    header h1 { font-size: 3rem; margin-bottom: 10px; }
-    header p { font-size: 1.3rem; }
 
-    /* --- Sección de productos/aportes --- */
-    .aportes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    /* --- Tienda de aportes --- */
+    #store {
+      display: none;
       padding: 40px 20px;
     }
+
+    .aportes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
     .aporte-card {
-      background: #1a1a1a;
-      border-radius: 12px;
+      background: #222;
       padding: 20px;
+      border-radius: 15px;
+      width: 200px;
+      text-align: center;
       transition: 0.3s;
     }
     .aporte-card:hover { transform: scale(1.05); }
-    .aporte-card img { border-radius: 12px; margin-bottom: 15px; }
-    .aporte-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-    .aporte-card p { font-size: 0.95rem; margin-bottom: 15px; color: #ccc; }
-
-    /* --- Botones de cada aporte --- */
-    .aporte-card .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: 0.3s;
-      cursor: pointer;
+    .aporte-card img {
+      border-radius: 12px;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      margin-bottom: 10px;
     }
-    .btn-comprar { background: #ff0033; color: white; }
-    .btn-comprar:hover { background: #cc0026; }
-    .btn-ticket { background: #5865F2; color: white; }
-    .btn-ticket:hover { background: #4752c4; }
+    .aporte-card .name { font-weight: bold; margin-bottom: 5px; }
+    .aporte-card .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+    .aporte-card button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .buy-btn { background: #ff0033; color: white; }
+    .buy-btn:hover { background: #cc0022; }
+    .ticket-btn { background: #00ccff; color: white; }
+    .ticket-btn:hover { background: #0099cc; }
 
-    /* --- Footer --- */
-    footer {
-      padding: 20px;
-      background: #111;
-      font-size: 0.9rem;
-      color: #aaa;
+    @media(max-width:768px){
+      .aporte-card { width: 150px; padding: 15px; }
+      #welcome-screen h1 { font-size: 2rem; }
+      #enter-btn { padding: 12px 30px; font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- --- Pantalla de Bienvenida --- -->
+  <!-- --- Pantalla de bienvenida --- -->
   <div id="welcome-screen">
     <h1>Bienvenido a INJERTOS MODS</h1>
-    <button id="btn-ingresar">INGRESAR</button>
+    <button id="enter-btn">Ingresar</button>
   </div>
 
-  <!-- --- Header --- -->
-  <header>
-    <h1>INJERTOS MODS</h1>
-    <p>La mejor tienda de aportes y mods</p>
-  </header>
-
-  <!-- --- Sección de Aportes --- -->
-  <section class="aportes" id="tienda" style="display: none;">
-    <div class="aporte-card">
-      <img src="https://i.imgur.com/abc123.jpg" alt="Aporte 1">
-      <h3>Aporte Premium 1</h3>
-      <p>Descripción breve del aporte, beneficios y detalles importantes.</p>
-      <a href="https://tu-tienda-de-aportes.com/producto1" class="btn btn-comprar">Comprar</a>
-      <a href="https://tu-tienda-de-aportes.com/ticket1" class="btn btn-ticket">Ticket</a>
+  <!-- --- Tienda de aportes --- -->
+  <div id="store">
+    <h1>TIENDA DE APORTES</h1>
+    <div class="aportes">
+      <div class="aporte-card">
+        <img src="https://i.imgur.com/abc123.jpg" alt="Aporte 1">
+        <div class="name">Aporte 1</div>
+        <div class="buttons">
+          <button class="buy-btn">Comprar</button>
+          <button class="ticket-btn">Ticket</button>
+        </div>
+      </div>
+      <div class="aporte-card">
+        <img src="https://i.imgur.com/def456.jpg" alt="Aporte 2">
+        <div class="name">Aporte 2</div>
+        <div class="buttons">
+          <button class="buy-btn">Comprar</button>
+          <button class="ticket-btn">Ticket</button>
+        </div>
+      </div>
+      <div class="aporte-card">
+        <img src="https://i.imgur.com/ghi789.jpg" alt="Aporte 3">
+        <div class="name">Aporte 3</div>
+        <div class="buttons">
+          <button class="buy-btn">Comprar</button>
+          <button class="ticket-btn">Ticket</button>
+        </div>
+      </div>
     </div>
-    <div class="aporte-card">
-      <img src="https://i.imgur.com/def456.jpg" alt="Aporte 2">
-      <h3>Aporte Premium 2</h3>
-      <p>Descripción breve del aporte, beneficios y detalles importantes.</p>
-      <a href="https://tu-tienda-de-aportes.com/producto2" class="btn btn-comprar">Comprar</a>
-      <a href="https://tu-tienda-de-aportes.com/ticket2" class="btn btn-ticket">Ticket</a>
-    </div>
-    <div class="aporte-card">
-      <img src="https://i.imgur.com/ghi789.jpg" alt="Aporte 3">
-      <h3>Aporte Premium 3</h3>
-      <p>Descripción breve del aporte, beneficios y detalles importantes.</p>
-      <a href="https://tu-tienda-de-aportes.com/producto3" class="btn btn-comprar">Comprar</a>
-      <a href="https://tu-tienda-de-aportes.com/ticket3" class="btn btn-ticket">Ticket</a>
-    </div>
-  </section>
+  </div>
 
-  <!-- --- Footer --- -->
-  <footer>
-    &copy; 2025 INJERTOS MODS. Todos los derechos reservados.
-  </footer>
-
-  <!-- --- Script para ingresar --- -->
+  <!-- --- Scripts --- -->
   <script>
-    const btnIngresar = document.getElementById('btn-ingresar');
+    const enterBtn = document.getElementById('enter-btn');
     const welcomeScreen = document.getElementById('welcome-screen');
-    const tienda = document.getElementById('tienda');
+    const store = document.getElementById('store');
 
-    btnIngresar.addEventListener('click', () => {
-      // Oculta la pantalla de bienvenida
-      welcomeScreen.style.opacity = '0';
-      setTimeout(() => {
-        welcomeScreen.style.display = 'none';
-        tienda.style.display = 'grid'; // Muestra la tienda
-      }, 500); // tiempo para la transición
+    enterBtn.addEventListener('click', () => {
+      welcomeScreen.style.display = 'none';
+      store.style.display = 'block';
     });
   </script>
+
 </body>
 </html>
