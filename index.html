@@ -51,39 +51,62 @@
     /* --- Tienda de aportes --- */
     #store {
       display: none;
-      padding: 40px 20px;
+      padding: 60px 20px;
+    }
+
+    #store h1 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #ff0033;
     }
 
     .aportes {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
     }
+
     .aporte-card {
-      background: #222;
+      width: 260px;
       padding: 20px;
-      border-radius: 15px;
-      width: 200px;
-      text-align: center;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
       transition: 0.3s;
     }
-    .aporte-card:hover { transform: scale(1.05); }
-    .aporte-card img {
-      border-radius: 12px;
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 10px;
+    .aporte-card:hover {
+      transform: scale(1.07);
+      border-color: rgba(255, 0, 51, 0.5);
+      box-shadow: 0 0 25px rgba(255, 0, 51, 0.3);
     }
-    .aporte-card .name { font-weight: bold; margin-bottom: 5px; }
+    .aporte-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .aporte-card .name {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .aporte-card .desc {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 12px;
+    }
     .aporte-card .buttons {
       display: flex;
       justify-content: space-around;
       margin-top: 10px;
     }
     .aporte-card button {
-      padding: 8px 12px;
+      padding: 10px 14px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -121,7 +144,7 @@
     .social-icons a:hover { background: #ff0033; }
 
     @media(max-width:768px){
-      .aporte-card { width: 150px; padding: 15px; }
+      .aporte-card { width: 80%; }
       #welcome-screen h1 { font-size: 2rem; }
       #enter-btn { padding: 12px 30px; font-size: 1rem; }
       .social-icons a { width: 40px; height: 40px; font-size: 1.2rem; }
@@ -143,10 +166,12 @@
   <div id="store">
     <h1>TIENDA INJERTOS</h1>
     <div class="aportes">
+
       <!-- Aporte 1 -->
       <div class="aporte-card">
-        <img src="https://via.placeholder.com/200x150.png?text=Aporte+1" alt="Aporte 1">
-        <div class="name">Aporte 1</div>
+        <img src="https://files.catbox.moe/z7s0px.png" alt="Aporte 1">
+        <div class="name">Aporte 1 - MOD DE VEHÍCULOS</div>
+        <div class="desc">Incluye autos modificados con texturas exclusivas y efectos visuales mejorados.</div>
         <div class="buttons">
           <a href="https://www.paypal.com/paypalme/TU_CORREO/5" target="_blank">
             <button class="buy-btn">Comprar</button>
@@ -154,10 +179,12 @@
           <button class="ticket-btn">Ticket</button>
         </div>
       </div>
+
       <!-- Aporte 2 -->
       <div class="aporte-card">
-        <img src="https://via.placeholder.com/200x150.png?text=Aporte+2" alt="Aporte 2">
-        <div class="name">Aporte 2</div>
+        <img src="https://files.catbox.moe/mldvwx.png" alt="Aporte 2">
+        <div class="name">Aporte 2 - PACK ARMAS HD</div>
+        <div class="desc">Armas con modelos 3D en alta resolución, efectos de fuego y sonido realista.</div>
         <div class="buttons">
           <a href="https://www.paypal.com/paypalme/TU_CORREO/10" target="_blank">
             <button class="buy-btn">Comprar</button>
@@ -165,10 +192,12 @@
           <button class="ticket-btn">Ticket</button>
         </div>
       </div>
+
       <!-- Aporte 3 -->
       <div class="aporte-card">
-        <img src="https://via.placeholder.com/200x150.png?text=Aporte+3" alt="Aporte 3">
-        <div class="name">Aporte 3</div>
+        <img src="https://files.catbox.moe/vbb2co.png" alt="Aporte 3">
+        <div class="name">Aporte 3 - MAPA EXCLUSIVO</div>
+        <div class="desc">Nuevo mapa con ambientación nocturna, neones y zonas secretas desbloqueables.</div>
         <div class="buttons">
           <a href="https://www.paypal.com/paypalme/TU_CORREO/15" target="_blank">
             <button class="buy-btn">Comprar</button>
@@ -176,6 +205,7 @@
           <button class="ticket-btn">Ticket</button>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -194,19 +224,12 @@
     const music = document.getElementById('bg-music');
 
     enterBtn.addEventListener('click', () => {
-      // Mostrar tienda
       welcomeScreen.style.display = 'none';
       store.style.display = 'block';
-
-      // Intentar reproducir música
-      music.volume = 0.6; // volumen moderado
+      music.volume = 0.6;
       const playPromise = music.play();
-
       if (playPromise !== undefined) {
-        playPromise.then(() => {
-          console.log("Música iniciada correctamente");
-        }).catch(error => {
-          console.warn("El navegador bloqueó la reproducción:", error);
+        playPromise.catch(() => {
           alert("Haz clic en cualquier parte de la pantalla para activar la música 🎵");
           document.body.addEventListener('click', () => music.play(), { once: true });
         });
@@ -216,3 +239,4 @@
 
 </body>
 </html>
+
