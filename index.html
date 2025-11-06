@@ -58,6 +58,19 @@
       justify-content: center;
       align-items: flex-start;
       gap: 40px;
+      position: relative;
+    }
+
+    /* Fondo detrás de la tienda */
+    #store::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://files.catbox.moe/1ux0gi.jpg') no-repeat center center;
+      background-size: cover;
+      filter: blur(5px) brightness(0.4);
+      z-index: -1;
     }
 
     /* Panel STAFF */
@@ -68,6 +81,7 @@
       border-radius: 12px;
       padding: 20px;
       text-align: left;
+      backdrop-filter: blur(10px);
     }
     .staff-panel h2 {
       text-align: center;
@@ -107,26 +121,37 @@
       justify-content: center;
       gap: 20px;
     }
+
+    /* Tarjetas de aportes (blanco y negro) */
     .aporte-card {
       width: 260px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 12px;
       padding: 15px;
       transition: 0.3s;
       display: flex;
       flex-direction: column;
       align-items: center;
+      backdrop-filter: blur(6px);
+      filter: grayscale(100%);
     }
     .aporte-card:hover {
       transform: scale(1.05);
       border-color: #ff0033;
+      filter: grayscale(0%);
     }
     .aporte-card img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 10px;
+      filter: grayscale(100%);
+      transition: 0.3s;
     }
+    .aporte-card:hover img {
+      filter: grayscale(0%);
+    }
+
     .aporte-buttons {
       margin-top: 10px;
       display: flex;
@@ -159,6 +184,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      z-index: 1000;
     }
     .social-icons a {
       background: #222;
@@ -195,9 +221,9 @@
         <img src="https://files.catbox.moe/56uipq.png">
         <div class="staff-info"><b>Kalcor</b><br>Owner</div>
       </div>
-       <div class="staff-member">
-       <img src="https://files.catbox.moe/cyjpv1.png">
-       <div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div>
+      <div class="staff-member">
+        <img src="https://files.catbox.moe/cyjpv1.png">
+        <div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div>
       </div>
     </div>
 
