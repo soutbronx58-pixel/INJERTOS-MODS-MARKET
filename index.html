@@ -8,7 +8,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: #121212;
       color: white;
       text-align: center;
@@ -16,7 +16,7 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* --- Pantalla de bienvenida --- */
+    /* Pantalla de bienvenida */
     #welcome-screen {
       position: fixed;
       top: 0; left: 0;
@@ -27,53 +27,50 @@
       align-items: center;
       background: url('https://files.catbox.moe/nnab0h.gif') no-repeat center center;
       background-size: cover;
-      z-index: 1000;
+      z-index: 999;
     }
     #welcome-screen h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 10px black;
+      text-shadow: 0 0 15px black;
     }
     #enter-btn {
       padding: 15px 40px;
       font-size: 1.2rem;
       border: none;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.85);
       cursor: pointer;
       font-weight: bold;
       transition: 0.3s;
     }
     #enter-btn:hover {
+      background: white;
       transform: scale(1.05);
-      background: rgba(255, 255, 255, 1);
     }
 
-    /* --- Contenedor principal --- */
+    /* Contenedor principal */
     #store {
-      display: none;
-      padding: 50px 20px;
+      display: none; /* Oculto hasta que se presione "Ingresar" */
+      padding: 40px 20px;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 50px;
-      min-height: 100vh;
+      gap: 40px;
     }
 
-    /* --- Panel STAFF --- */
+    /* Panel STAFF */
     .staff-panel {
-      width: 260px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
+      width: 250px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
       padding: 20px;
       text-align: left;
-      box-shadow: 0 0 20px rgba(255, 0, 51, 0.2);
-      backdrop-filter: blur(8px);
     }
     .staff-panel h2 {
       text-align: center;
-      font-size: 1.5rem;
       margin-bottom: 20px;
       text-shadow: 0 0 8px #ff0033;
     }
@@ -84,96 +81,51 @@
       gap: 10px;
     }
     .staff-member img {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.3);
       object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.3);
     }
     .staff-info {
-      display: flex;
-      flex-direction: column;
-    }
-    .staff-name {
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .staff-role {
-      font-size: 0.85rem;
-      color: #aaa;
+      font-size: 0.9rem;
     }
 
-    /* --- Tienda de aportes --- */
+    /* Tienda */
     .store-content {
       flex: 1;
       max-width: 900px;
     }
-
     .store-content h1 {
-      margin-bottom: 40px;
-      font-size: 2.5rem;
+      font-size: 2rem;
+      margin-bottom: 30px;
       text-shadow: 0 0 10px #ff0033;
     }
-
     .aportes {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
     }
-
     .aporte-card {
       width: 260px;
-      padding: 20px;
-      border-radius: 20px;
       background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 15px;
       transition: 0.3s;
     }
     .aporte-card:hover {
-      transform: scale(1.07);
-      border-color: rgba(255, 0, 51, 0.5);
-      box-shadow: 0 0 25px rgba(255, 0, 51, 0.3);
+      transform: scale(1.05);
+      border-color: #ff0033;
     }
     .aporte-card img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
-    .aporte-card .name {
-      font-weight: bold;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-    .aporte-card .desc {
-      font-size: 0.9rem;
-      color: #bbb;
-      margin-bottom: 12px;
-    }
-    .aporte-card .buttons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 10px;
-    }
-    .aporte-card button {
-      padding: 10px 14px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    .buy-btn { background: #ff0033; color: white; }
-    .buy-btn:hover { background: #cc0022; }
-    .ticket-btn { background: #00ccff; color: white; }
-    .ticket-btn:hover { background: #0099cc; }
 
-    /* --- Redes sociales fijas --- */
+    /* Redes sociales */
     .social-icons {
       position: fixed;
       top: 50%;
@@ -181,70 +133,42 @@
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      z-index: 1001;
+      gap: 10px;
     }
     .social-icons a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50px;
-      height: 50px;
       background: #222;
       color: white;
-      border-radius: 8px 0 0 8px;
+      padding: 10px;
       font-size: 1.5rem;
+      border-radius: 8px 0 0 8px;
       transition: 0.3s;
     }
     .social-icons a:hover { background: #ff0033; }
-
-    @media(max-width: 1000px){
-      #store {
-        flex-direction: column;
-        align-items: center;
-      }
-      .staff-panel {
-        width: 90%;
-        margin-bottom: 30px;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- --- Reproductor oculto --- -->
   <audio id="bg-music" src="https://files.catbox.moe/qye9ic.mp3" loop preload="auto"></audio>
 
-  <!-- --- Pantalla de bienvenida --- -->
   <div id="welcome-screen">
     <h1>9 MESES PARA NACER Y 1 MINUTO PARA MORIR</h1>
     <button id="enter-btn">Ingresar</button>
   </div>
 
-  <!-- --- Tienda con panel STAFF --- -->
   <div id="store">
     <div class="staff-panel">
       <h2>STAFF DISCORD</h2>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/8t1q7u.png" alt="Owner">
-        <div class="staff-info">
-          <div class="staff-name">Slix</div>
-          <div class="staff-role">Owner / Developer</div>
-        </div>
+        <img src="https://files.catbox.moe/8t1q7u.png">
+        <div class="staff-info"><b>Slix</b><br>Owner</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/rs5r5x.png" alt="Admin">
-        <div class="staff-info">
-          <div class="staff-name">Lince</div>
-          <div class="staff-role">Administrador</div>
-        </div>
+        <img src="https://files.catbox.moe/rs5r5x.png">
+        <div class="staff-info"><b>Lince</b><br>Admin</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/jn5mps.png" alt="Soporte">
-        <div class="staff-info">
-          <div class="staff-name">Neko</div>
-          <div class="staff-role">Soporte Técnico</div>
-        </div>
+        <img src="https://files.catbox.moe/jn5mps.png">
+        <div class="staff-info"><b>Neko</b><br>Soporte</div>
       </div>
     </div>
 
@@ -252,17 +176,40 @@
       <h1>TIENDA INJERTOS</h1>
       <div class="aportes">
         <div class="aporte-card">
-          <img src="https://files.catbox.moe/utloti.png" alt="Aporte 1">
-          <div class="name">APORTE SLIX</div>
-          <div class="desc">Incluye efectos y mods optimizados, armas, comandos y más. Abrir ticket para detalles.</div>
-          <div class="buttons">
-            <a href="https://www.paypal.com/paypalme/TU_CORREO/5" target="_blank"><button class="buy-btn">Comprar</button></a>
-            <button class="ticket-btn">Ticket</button>
-          </div>
+          <img src="https://files.catbox.moe/utloti.png">
+          <p><b>Aporte Slix</b></p>
+          <p>Mods optimizados, armas y efectos.</p>
         </div>
-
         <div class="aporte-card">
-          <img src="https://files.catbox.moe/mldvwx.png" alt="Aporte 2">
-          <div class="name">PACK ARMAS HD</div>
-          <div class="desc">Armas 3D en alta resolución, con efectos de fueg
+          <img src="https://files.catbox.moe/mldvwx.png">
+          <p><b>Pack Armas HD</b></p>
+          <p>Armas 3D realistas con efectos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="social-icons">
+    <a href="https://discord.gg/KwT6k89T" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://www.youtube.com/@fmp-b1c" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <script>
+    const btn = document.getElementById('enter-btn');
+    const welcome = document.getElementById('welcome-screen');
+    const store = document.getElementById('store');
+    const music = document.getElementById('bg-music');
+
+    btn.addEventListener('click', () => {
+      welcome.style.display = 'none';
+      store.style.display = 'flex'; // MOSTRAR la tienda
+      music.volume = 0.6;
+      music.play().catch(() => {
+        alert("Haz clic para activar la música 🎵");
+        document.body.addEventListener('click', () => music.play(), { once: true });
+      });
+    });
+  </script>
+</body>
+</html>
