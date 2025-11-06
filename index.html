@@ -16,6 +16,7 @@
     }
     a { text-decoration: none; color: inherit; }
 
+    /* ---------- PANTALLA DE BIENVENIDA ---------- */
     #welcome-screen {
       position: fixed;
       top: 0; left: 0;
@@ -48,6 +49,7 @@
       transform: scale(1.05);
     }
 
+    /* ---------- TIENDA ---------- */
     #store {
       display: none; 
       padding: 40px 20px;
@@ -70,6 +72,7 @@
       z-index: -1;
     }
 
+    /* ---------- PANEL STAFF ---------- */
     .staff-panel {
       width: 250px;
       background: rgba(255, 0, 0, 0.05);
@@ -106,184 +109,28 @@
     }
     .staff-info { font-size: 0.9rem; color: #ff9999; }
 
+    /* ---------- CONTENIDO PRINCIPAL ---------- */
     .store-content {
       flex: 1;
       max-width: 1000px;
     }
-    .store-content h1 { font-size: 2rem; margin-bottom: 10px; text-shadow: 0 0 10px white; }
-    .store-content h2 { font-size: 1.5rem; margin-bottom: 25px; color: #ff4c4c; text-shadow: 0 0 8px red; }
-    .aportes { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-
-    .aporte-card {
-      width: 340px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 18px;
-      padding: 20px;
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08), inset 0 0 15px rgba(0, 0, 0, 0.5);
+    .store-content h1 { 
+      font-size: 2rem; 
+      margin-bottom: 10px; 
+      text-shadow: 0 0 10px white; 
     }
-    .aporte-card:hover { transform: scale(1.07); border-color: rgba(255,255,255,0.7); box-shadow: 0 0 30px rgba(255,255,255,0.4), inset 0 0 25px rgba(0,0,0,0.7); }
-    .aporte-card img { width: 100%; border-radius: 12px; margin-bottom: 12px; transition: 0.3s; }
-    .aporte-card p { font-size: 1.1rem; margin: 5px 0; }
 
-    .aporte-buttons { margin-top: 15px; display: flex; gap: 12px; width: 100%; justify-content: center; }
-    .aporte-buttons a {
-      flex: 1;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      transition: 0.3s;
-      background: linear-gradient(145deg, #000000, #ff0000);
-      color: white;
-    }
-    .aporte-buttons a:hover { background: linear-gradient(145deg, #ff0000, #000000); color: #fff; transform: scale(1.05); }
-
-    .social-icons {
-      position: fixed;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-    }
-    .social-icons a {
-      background: #222;
-      color: white;
-      padding: 10px;
+    /* ---------- SUBTÍTULO CON EFECTO ---------- */
+    #store-subtitle {
       font-size: 1.5rem;
-      border-radius: 8px 0 0 8px;
-      transition: 0.3s;
-    }
-    .social-icons a:hover { background: #ff0000; color: white; }
-
-    #visit-counter {
-      position: fixed;
-      bottom: 15px;
-      left: 15px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 10px;
-      padding: 10px 20px;
-      backdrop-filter: blur(10px);
-      color: white;
+      margin-bottom: 25px;
       font-weight: bold;
-      font-size: 1rem;
-      text-shadow: 0 0 5px black;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-      display: none;
-      z-index: 9999;
+      background: linear-gradient(90deg, #000000, #ff0000, #000000);
+      background-size: 200% 200%;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: flame 3s infinite linear;
+      text-shadow: 0 0 15px rgba(255,0,0,0.5);
     }
-
-    @media (max-width: 768px) {
-      #store { flex-direction: column; padding: 20px 10px; gap: 20px; }
-      .staff-panel { width: 90%; margin: 0 auto; }
-      .store-content { width: 100%; }
-      .aportes { flex-direction: column; gap: 20px; }
-      .aporte-card { width: 100%; }
-      .social-icons { top: auto; bottom: 10px; right: 50%; transform: translateX(-50%); flex-direction: row; }
-    }
-  </style>
-</head>
-<body>
-
-  <audio id="bg-music" src="https://files.catbox.moe/5pnqo0.mp3" loop preload="auto"></audio>
-
-  <div id="welcome-screen">
-    <h1>STORE INJERTOS MODS</h1>
-    <button id="enter-btn">Ingresar</button>
-  </div>
-
-  <div id="store">
-    <div class="staff-panel">
-      <h2>STAFF DISCORD</h2>
-      <div class="staff-member"><img src="https://files.catbox.moe/wfaxti.png" alt="Piero Quispe"><div class="staff-info"><b>Piero Quispe</b><br>Owner</div></div>
-      <div class="staff-member"><img src="https://files.catbox.moe/ptvp3v.gif" alt="Hilnzo"><div class="staff-info"><b>Hilnzo</b><br>Owner</div></div>
-      <div class="staff-member"><img src="https://files.catbox.moe/56uipq.png" alt="Kalcor"><div class="staff-info"><b>Kalcor</b><br>Owner</div></div>
-    </div
-      
-    <div class="store-content">
-      <h1>INJERTOS STORE</h1>
-      <h2 id="store-subtitle">¡BIENVENIDO A NUESTRO TIENDA INJERTOS MODS, PODRÁS ENCONTRAR MODS CONFIABLES Y OPTIMIZACIONES!</h2>
-      <div class="aportes">
-        <div class="aporte-card">
-          <img src="https://files.catbox.moe/utloti.png" alt="Aporte Slix" loading="lazy">
-          <p><b>Aporte Slix</b></p>
-          <p>Mods optimizados, armas y efectos.</p>
-          <div class="aporte-buttons">
-            <a href="#" class="comprar-btn">Comprar</a>
-            <a href="#" class="ticket-btn">Ticket</a>
-          </div>
-        </div>
-        <div class="aporte-card">
-          <img src="https://files.catbox.moe/mldvwx.png" alt="Pack Armas HD" loading="lazy">
-          <p><b>Pack Armas HD</b></p>
-          <p>Armas 3D realistas con efectos.</p>
-          <div class="aporte-buttons">
-            <a href="#" class="comprar-btn">Comprar</a>
-            <a href="#" class="ticket-btn">Ticket</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="visit-counter">👁️ Visitas: <span id="count">0</span></div>
-
-  <div class="social-icons">
-    <a href="https://discord.gg/TUINVITACION" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://www.youtube.com/channel/TU_CANAL" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
-  </div>
-
-  <script>
-    const btn = document.getElementById('enter-btn');
-    const welcome = document.getElementById('welcome-screen');
-    const store = document.getElementById('store');
-    const music = document.getElementById('bg-music');
-    const counterBox = document.getElementById('visit-counter');
-    const counterNum = document.getElementById('count');
-
-    let visits = localStorage.getItem('visitCount') || 0;
-    visits = parseInt(visits) + 1;
-    localStorage.setItem('visitCount', visits);
-
-    btn.addEventListener('click', () => {
-      welcome.style.display = 'none';
-      store.style.display = 'flex';
-      counterBox.style.display = 'block';
-      counterNum.textContent = visits;
-
-      music.volume = 0.6;
-      music.play().catch(() => {
-        const notice = document.createElement('div');
-        notice.textContent = "🎵 Toca para activar la música";
-        notice.style.position = "fixed";
-        notice.style.bottom = "20px";
-        notice.style.left = "50%";
-        notice.style.transform = "translateX(-50%)";
-        notice.style.background = "rgba(0,0,0,0.7)";
-        notice.style.color = "white";
-        notice.style.padding = "10px 20px";
-        notice.style.borderRadius = "10px";
-        notice.style.cursor = "pointer";
-        notice.style.zIndex = 10000;
-        document.body.appendChild(notice);
-
-        notice.addEventListener('click', () => {
-          music.play();
-          notice.remove();
-        });
-      });
-    });
-  </script>
-
-</body>
-</html>
+    @keyfram
