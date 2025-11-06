@@ -14,25 +14,26 @@
       text-align: center;
       overflow-x: hidden;
     }
+
     a { text-decoration: none; color: inherit; }
 
+    /* Pantalla de bienvenida */
     #welcome-screen {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: url('https://files.catbox.moe/dfmf63.png') no-repeat center center;
-      background-size: cover;
+      background: url('https://files.catbox.moe/dfmf63.png') no-repeat center center / cover;
       z-index: 9999;
     }
+
     #welcome-screen h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
-      text-shadow: 0 0 15px #ff0000, 0 0 30px #000;
       color: #fff;
+      text-shadow: 0 0 15px #ff0000, 0 0 30px #000;
       animation: glow 2s infinite alternate;
     }
     @keyframes glow {
@@ -46,11 +47,11 @@
       border: none;
       border-radius: 10px;
       background: linear-gradient(145deg, #000, #ff0000);
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
       color: #fff;
+      font-weight: bold;
+      cursor: pointer;
       box-shadow: 0 0 15px rgba(255,0,0,0.6);
+      transition: 0.3s;
     }
     #enter-btn:hover {
       background: linear-gradient(145deg, #ff0000, #000);
@@ -58,28 +59,28 @@
       box-shadow: 0 0 25px red;
     }
 
+    /* Contenido tienda */
     #store {
       display: none;
-      padding: 40px 20px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       gap: 40px;
+      padding: 40px 20px;
       position: relative;
     }
 
     #store::before {
       content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://files.catbox.moe/dfmf63.png') no-repeat center center;
-      background-size: cover;
+      inset: 0;
+      background: url('https://files.catbox.moe/dfmf63.png') no-repeat center center / cover;
       filter: blur(5px) brightness(0.4);
       z-index: -1;
     }
 
+    /* Staff */
     .staff-panel {
       width: 250px;
       background: rgba(255, 0, 0, 0.05);
@@ -114,8 +115,8 @@
       object-fit: cover;
       border: 1px solid rgba(255,0,0,0.3);
     }
-    .staff-info { font-size: 0.9rem; color: #ff9999; }
 
+    /* Contenido principal */
     .store-content {
       flex: 1;
       max-width: 1000px;
@@ -123,8 +124,8 @@
     .store-content h1 {
       font-size: 2rem;
       margin-bottom: 10px;
-      text-shadow: 0 0 15px #ff0000, 0 0 30px #000;
       color: #fff;
+      text-shadow: 0 0 15px #ff0000, 0 0 30px #000;
     }
     #store-subtitle {
       font-size: 1.2rem;
@@ -158,15 +159,8 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 0 25px rgba(255,0,0,0.2);
     }
-    .aporte-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 35px rgba(255,0,0,0.6);
-    }
-    .aporte-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
+    .aporte-card:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,0,0.6); }
+    .aporte-card img { width: 100%; border-radius: 12px; margin-bottom: 12px; }
     .aporte-card p { font-size: 1.1rem; margin: 5px 0; }
 
     .aporte-buttons {
@@ -184,8 +178,8 @@
       text-align: center;
       color: #fff;
       background: linear-gradient(145deg, #000, #ff0000);
-      transition: 0.3s;
       box-shadow: 0 0 10px rgba(255,0,0,0.4);
+      transition: 0.3s;
     }
     .aporte-buttons a:hover {
       background: linear-gradient(145deg, #ff0000, #000);
@@ -193,6 +187,57 @@
       box-shadow: 0 0 20px rgba(255,0,0,0.8);
     }
 
+    /* Botón música */
+    #music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(145deg, #000, #ff0000);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2000;
+      box-shadow: 0 0 10px red;
+      transition: 0.3s;
+    }
+    #music-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px red; }
+
+    /* Modal */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+    #modal-content {
+      background: #1a1a1a;
+      border: 2px solid red;
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px red;
+      color: white;
+    }
+    #modal-close {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(145deg, #ff0000, #000);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Redes */
     .social-icons {
       position: fixed;
       top: 50%;
@@ -211,8 +256,9 @@
       border-radius: 8px 0 0 8px;
       transition: 0.3s;
     }
-    .social-icons a:hover { background: #ff0000; color: white; }
+    .social-icons a:hover { background: #ff0000; }
 
+    /* Contador */
     #visit-counter {
       position: fixed;
       bottom: 15px;
@@ -224,9 +270,6 @@
       backdrop-filter: blur(10px);
       color: white;
       font-weight: bold;
-      font-size: 1rem;
-      text-shadow: 0 0 5px black;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
       display: none;
       z-index: 9999;
     }
@@ -244,6 +287,7 @@
 <body>
 
   <audio id="bg-music" src="https://files.catbox.moe/5pnqo0.mp3" loop preload="auto"></audio>
+  <button id="music-btn"><i class="fas fa-play"></i></button>
 
   <div id="welcome-screen">
     <h1>STORE INJERTOS MODS</h1>
@@ -254,86 +298,5 @@
     <div class="staff-panel">
       <h2>ENCARGADOS</h2>
       <div class="staff-member"><img src="https://files.catbox.moe/wfaxti.png"><div class="staff-info"><b>Piero Quispe</b><br>Owner</div></div>
-      <div class="staff-member"><img src="https://files.catbox.moe/ptvp3v.gif"><div class="staff-info"><b>Hilnzo</b><br>Owner</div></div>
-      <div class="staff-member"><img src="https://files.catbox.moe/56uipq.png"><div class="staff-info"><b>Kalcor</b><br>Owner</div></div>
-    </div>
+      <div class="staff-member"><img src="https://files.catbo
 
-    <div class="store-content">
-      <h1>INJERTOS STORE</h1>
-      <h2 id="store-subtitle">¡BIENVENIDO A INJERTOS MODS PODRÁS ENCONTRAR MODS CONFIABLES Y OPTIMIZACIONES 100% SEGURO!</h2>
-
-      <div class="aportes">
-        <div class="aporte-card">
-          <img src="https://files.catbox.moe/utloti.png" alt="Aporte Slix" loading="lazy">
-          <p><b>Aporte Slix</b></p>
-          <p>Mods optimizados, armas y efectos.</p>
-          <div class="aporte-buttons">
-            <a href="#">Comprar</a>
-            <a href="#">Ticket</a>
-          </div>
-        </div>
-
-        <div class="aporte-card">
-          <img src="https://files.catbox.moe/mldvwx.png" alt="Pack Armas HD" loading="lazy">
-          <p><b>Pack Armas HD</b></p>
-          <p>Armas 3D realistas con efectos.</p>
-          <div class="aporte-buttons">
-            <a href="#">Comprar</a>
-            <a href="#">Ticket</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="visit-counter">👁️ Visitas: <span id="count">0</span></div>
-
-  <div class="social-icons">
-    <a href="https://discord.gg/TUINVITACION" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://www.youtube.com/channel/TU_CANAL" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
-  </div>
-
-  <script>
-    const btn = document.getElementById('enter-btn');
-    const welcome = document.getElementById('welcome-screen');
-    const store = document.getElementById('store');
-    const music = document.getElementById('bg-music');
-    const counterBox = document.getElementById('visit-counter');
-    const counterNum = document.getElementById('count');
-
-    let visits = localStorage.getItem('visitCount') || 0;
-    visits = parseInt(visits) + 1;
-    localStorage.setItem('visitCount', visits);
-
-    btn.addEventListener('click', () => {
-      welcome.style.display = 'none';
-      store.style.display = 'flex';
-      counterBox.style.display = 'block';
-      counterNum.textContent = visits;
-
-      music.volume = 0.6;
-      music.play().catch(() => {
-        const notice = document.createElement('div');
-        notice.textContent = "🎵 Toca para activar la música";
-        notice.style.position = "fixed";
-        notice.style.bottom = "20px";
-        notice.style.left = "50%";
-        notice.style.transform = "translateX(-50%)";
-        notice.style.background = "rgba(0,0,0,0.7)";
-        notice.style.color = "white";
-        notice.style.padding = "10px 20px";
-        notice.style.borderRadius = "10px";
-        notice.style.cursor = "pointer";
-        notice.style.zIndex = 10000;
-        document.body.appendChild(notice);
-
-        notice.addEventListener('click', () => {
-          music.play();
-          notice.remove();
-        });
-      });
-    });
-  </script>
-</body>
-</html>
