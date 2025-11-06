@@ -27,7 +27,7 @@
       align-items: center;
       background: url('https://files.catbox.moe/dfmf63.png') no-repeat center center;
       background-size: cover;
-      z-index: 999;
+      z-index: 9999;
     }
     #welcome-screen h1 {
       font-size: 2.5rem;
@@ -72,7 +72,7 @@
       z-index: -1;
     }
 
-    /* Panel STAFF con efecto rojo */
+    /* Panel STAFF */
     .staff-panel {
       width: 250px;
       background: rgba(255, 0, 0, 0.05);
@@ -223,6 +223,16 @@
       display: none;
       z-index: 9999;
     }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      #store { flex-direction: column; padding: 20px 10px; gap: 20px; }
+      .staff-panel { width: 90%; margin: 0 auto; }
+      .store-content { width: 100%; }
+      .aportes { flex-direction: column; gap: 20px; }
+      .aporte-card { width: 100%; }
+      .social-icons { top: auto; bottom: 10px; right: 50%; transform: translateX(50%); flex-direction: row; }
+    }
   </style>
 </head>
 <body>
@@ -234,32 +244,32 @@
     <button id="enter-btn">Ingresar</button>
   </div>
 
-  <div id="store">
+  <div id="store" style="display:none;">
     <div class="staff-panel">
       <h2>STAFF DISCORD</h2>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/wfaxti.png">
+        <img src="https://files.catbox.moe/wfaxti.png" alt="Piero Quispe">
         <div class="staff-info"><b>Piero Quispe</b><br>Owner</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/ptvp3v.gif">
+        <img src="https://files.catbox.moe/ptvp3v.gif" alt="Hilnzo">
         <div class="staff-info"><b>Hilnzo</b><br>Owner</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/56uipq.png">
+        <img src="https://files.catbox.moe/56uipq.png" alt="Kalcor">
         <div class="staff-info"><b>Kalcor</b><br>Owner</div>
       </div>
       <div class="staff-member">
-        <img src="https://files.catbox.moe/cyjpv1.png">
+        <img src="https://files.catbox.moe/cyjpv1.png" alt="Kairox">
         <div class="staff-info"><b>Kairox</b><br>Kabrito otaku</div>
       </div>
       <div class="staff-member">
-       <img src="https://files.catbox.moe/kf4km5.png">
-       <div class="staff-info"><b>Manzer</b><br>Kachudo</div>
+        <img src="https://files.catbox.moe/kf4km5.png" alt="Manzer">
+        <div class="staff-info"><b>Manzer</b><br>Kachudo</div>
       </div>
       <div class="staff-member">
-       <img src="https://files.catbox.moe/0l8iwx.png">
-       <div class="staff-info"><b>EL HAITIANO</b><br>singatumadre</div>
+        <img src="https://files.catbox.moe/0l8iwx.png" alt="EL HAITIANO">
+        <div class="staff-info"><b>EL HAITIANO</b><br>singatumadre</div>
       </div>
     </div>
 
@@ -269,7 +279,7 @@
       <div class="aportes">
 
         <div class="aporte-card">
-          <img src="https://files.catbox.moe/utloti.png">
+          <img src="https://files.catbox.moe/utloti.png" alt="Aporte Slix" loading="lazy">
           <p><b>Aporte Slix</b></p>
           <p>Mods optimizados, armas y efectos.</p>
           <div class="aporte-buttons">
@@ -279,7 +289,7 @@
         </div>
 
         <div class="aporte-card">
-          <img src="https://files.catbox.moe/mldvwx.png">
+          <img src="https://files.catbox.moe/mldvwx.png" alt="Pack Armas HD" loading="lazy">
           <p><b>Pack Armas HD</b></p>
           <p>Armas 3D realistas con efectos.</p>
           <div class="aporte-buttons">
@@ -308,7 +318,7 @@
     const counterBox = document.getElementById('visit-counter');
     const counterNum = document.getElementById('count');
 
-    // Simula contador global (LocalStorage)
+    // Contador de visitas (LocalStorage)
     let visits = localStorage.getItem('visitCount') || 0;
     visits++;
     localStorage.setItem('visitCount', visits);
@@ -321,11 +331,7 @@
 
       music.volume = 0.6;
       music.play().catch(() => {
-        alert("Haz clic para activar la música 🎵");
-        document.body.addEventListener('click', () => music.play(), { once: true });
-      });
-    });
-  </script>
+        const notice = document.createElement('div');
+        notice.textContent = "🎵 Toca para activar la música";
+        notice.style.position =
 
-</body>
-</html>
