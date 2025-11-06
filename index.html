@@ -47,13 +47,58 @@
 
   /* ---------------- TIENDA ---------------- */
   .tienda {
+    display: none; /* Oculto al inicio */
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 40px 10px;
+  }
+
+  /* SECCIÓN DE BIENVENIDA */
+  .bienvenida {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(0,0,0,0.8);
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    color: white;
+  }
+
+  .bienvenida h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+  }
+
+  .redes {
+    display: flex;
+    gap: 20px;
+    font-size: 1.8rem;
+  }
+
+  .redes a {
+    color: white;
+    transition: 0.3s;
+  }
+
+  .redes a:hover {
+    color: #00ffcc;
+  }
+
+  /* PRODUCTOS */
+  .productos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
-    padding: 40px 10px;
-    margin-top: 20px;
-    display: none; /* Oculto al inicio */
+    width: 90%;
   }
 
   .producto-card {
@@ -155,50 +200,63 @@
 
 <!-- SECCIÓN TIENDA -->
 <div class="tienda" id="tienda">
-  <!-- PRODUCTO 1 -->
-  <div class="producto-card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYQzDL9hIlPewUCbpi1JGS2SaMdwV4zznew&s" alt="Vehículo Mod">
-    <div class="producto-info">
-      <h3>OPTIMIZACIÓN</h3>
-      <p><b>Autor:</b> INJERTOS MODS</p>
-      <p><b>Incluye:</b> Archivos y programas actualizados.</p>
-      <p><b>Versión:</b> Las condiciones varían, el mínimo de ram para poder ejecutar los programas es 4GB.</p>
-      <div class="producto-precio">$2.00 USD</div>
-      <div class="botones-producto">
-        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
-        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
-      </div>
+  <!-- BIENVENIDA -->
+  <div class="bienvenida">
+    <h2>Bienvenido a Market Injertos Mods</h2>
+    <div class="redes">
+      <a href="https://discord.gg/rNJ7UaPBYa" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
 
-  <!-- PRODUCTO 2 -->
-  <div class="producto-card">
-    <img src="https://i.imgur.com/Y3hth0O.jpeg" alt="Base Mapping">
-    <div class="producto-info">
-      <h3>Base Mapeada Premium</h3>
-      <p><b>Autor:</b> KAIROX</p>
-      <p><b>Incluye:</b> Base Roleplay moderna + iluminación + texturas HD.</p>
-      <p><b>Compatibilidad:</b> SAMP 0.3DL</p>
-      <div class="producto-precio">$8.00 USD</div>
-      <div class="botones-producto">
-        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
-        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+  <!-- PRODUCTOS -->
+  <div class="productos">
+    <!-- PRODUCTO 1 -->
+    <div class="producto-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYQzDL9hIlPewUCbpi1JGS2SaMdwV4zznew&s" alt="Vehículo Mod">
+      <div class="producto-info">
+        <h3>OPTIMIZACIÓN</h3>
+        <p><b>Autor:</b> INJERTOS MODS</p>
+        <p><b>Incluye:</b> Archivos y programas actualizados.</p>
+        <p><b>Versión:</b> Las condiciones varían, el mínimo de ram para poder ejecutar los programas es 4GB.</p>
+        <div class="producto-precio">$2.00 USD</div>
+        <div class="botones-producto">
+          <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+          <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- PRODUCTO 3 -->
-  <div class="producto-card">
-    <img src="https://i.imgur.com/XfUBTdc.jpeg" alt="Script System">
-    <div class="producto-info">
-      <h3>Sistema de Trabajo (JOB)</h3>
-      <p><b>Autor:</b> Manzer</p>
-      <p><b>Incluye:</b> Script con UI personalizada y guardado MySQL.</p>
-      <p><b>Lenguaje:</b> Pawn</p>
-      <div class="producto-precio">$10.00 USD</div>
-      <div class="botones-producto">
-        <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
-        <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+    <!-- PRODUCTO 2 -->
+    <div class="producto-card">
+      <img src="https://i.imgur.com/Y3hth0O.jpeg" alt="Base Mapping">
+      <div class="producto-info">
+        <h3>Base Mapeada Premium</h3>
+        <p><b>Autor:</b> KAIROX</p>
+        <p><b>Incluye:</b> Base Roleplay moderna + iluminación + texturas HD.</p>
+        <p><b>Compatibilidad:</b> SAMP 0.3DL</p>
+        <div class="producto-precio">$8.00 USD</div>
+        <div class="botones-producto">
+          <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+          <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTO 3 -->
+    <div class="producto-card">
+      <img src="https://i.imgur.com/XfUBTdc.jpeg" alt="Script System">
+      <div class="producto-info">
+        <h3>Sistema de Trabajo (JOB)</h3>
+        <p><b>Autor:</b> Manzer</p>
+        <p><b>Incluye:</b> Script con UI personalizada y guardado MySQL.</p>
+        <p><b>Lenguaje:</b> Pawn</p>
+        <div class="producto-precio">$10.00 USD</div>
+        <div class="botones-producto">
+          <a href="https://paypal.me/tuenlace" target="_blank" class="boton-aporte"><i class="fa-solid fa-cart-shopping"></i> Comprar</a>
+          <a href="https://discord.gg/rNJ7UaPBYa" target="_blank" class="boton-ticket"><i class="fa-solid fa-ticket"></i> Abrir Ticket</a>
+        </div>
       </div>
     </div>
   </div>
