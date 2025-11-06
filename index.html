@@ -231,7 +231,7 @@
       .store-content { width: 100%; }
       .aportes { flex-direction: column; gap: 20px; }
       .aporte-card { width: 100%; }
-      .social-icons { top: auto; bottom: 10px; right: 50%; transform: translateX(50%); flex-direction: row; }
+      .social-icons { top: auto; bottom: 10px; right: 50%; transform: translateX(-50%); flex-direction: row; }
     }
   </style>
 </head>
@@ -244,7 +244,7 @@
     <button id="enter-btn">Ingresar</button>
   </div>
 
-  <div id="store" style="display:none;">
+  <div id="store">
     <div class="staff-panel">
       <h2>STAFF DISCORD</h2>
       <div class="staff-member">
@@ -277,7 +277,6 @@
       <h1>INJERTOS STORE</h1>
       <h2 id="store-subtitle">¡BIENVENIDO A NUESTRO TIENDA INJERTOS MODS, PODRÁS ENCONTRAR MODS CONFIABLES Y OPTIMIZACIONES!</h2>
       <div class="aportes">
-
         <div class="aporte-card">
           <img src="https://files.catbox.moe/utloti.png" alt="Aporte Slix" loading="lazy">
           <p><b>Aporte Slix</b></p>
@@ -297,7 +296,6 @@
             <a href="#" class="ticket-btn">Ticket</a>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -320,7 +318,7 @@
 
     // Contador de visitas (LocalStorage)
     let visits = localStorage.getItem('visitCount') || 0;
-    visits++;
+    visits = parseInt(visits) + 1;
     localStorage.setItem('visitCount', visits);
 
     btn.addEventListener('click', () => {
@@ -329,9 +327,30 @@
       counterBox.style.display = 'block';
       counterNum.textContent = visits;
 
+      // Intentar reproducir música
       music.volume = 0.6;
       music.play().catch(() => {
         const notice = document.createElement('div');
         notice.textContent = "🎵 Toca para activar la música";
-        notice.style.position =
+        notice.style.position = "fixed";
+        notice.style.bottom = "20px";
+        notice.style.left = "50%";
+        notice.style.transform = "translateX(-50%)";
+        notice.style.background = "rgba(0,0,0,0.7)";
+        notice.style.color = "white";
+        notice.style.padding = "10px 20px";
+        notice.style.borderRadius = "10px";
+        notice.style.cursor = "pointer";
+        notice.style.zIndex = 10000;
+        document.body.appendChild(notice);
 
+        notice.addEventListener('click', () => {
+          music.play();
+          notice.remove();
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
