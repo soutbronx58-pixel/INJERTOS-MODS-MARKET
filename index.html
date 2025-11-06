@@ -61,7 +61,6 @@
       position: relative;
     }
 
-    /* Fondo detrás de la tienda */
     #store::before {
       content: "";
       position: absolute;
@@ -86,7 +85,7 @@
     .staff-panel h2 {
       text-align: center;
       margin-bottom: 20px;
-      text-shadow: 0 0 8px #ff0033;
+      text-shadow: 0 0 8px white;
     }
     .staff-member {
       display: flex;
@@ -113,7 +112,7 @@
     .store-content h1 {
       font-size: 2rem;
       margin-bottom: 30px;
-      text-shadow: 0 0 10px #ff0033;
+      text-shadow: 0 0 10px white;
     }
     .aportes {
       display: flex;
@@ -122,34 +121,31 @@
       gap: 20px;
     }
 
-    /* Tarjetas de aportes (blanco y negro) */
+    /* Tarjetas de aportes (efecto blanco + negro) */
     .aporte-card {
       width: 260px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
       padding: 15px;
       transition: 0.3s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      backdrop-filter: blur(6px);
-      filter: grayscale(100%);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05), inset 0 0 10px rgba(0, 0, 0, 0.4);
     }
     .aporte-card:hover {
       transform: scale(1.05);
-      border-color: #ff0033;
-      filter: grayscale(0%);
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.7);
     }
+
     .aporte-card img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 10px;
-      filter: grayscale(100%);
       transition: 0.3s;
-    }
-    .aporte-card:hover img {
-      filter: grayscale(0%);
     }
 
     .aporte-buttons {
@@ -170,10 +166,10 @@
       text-align: center;
       transition: 0.2s;
     }
-    .comprar-btn { background: #ff0033; }
-    .comprar-btn:hover { background: #cc0022; }
-    .ticket-btn { background: #00ccff; }
-    .ticket-btn:hover { background: #0099cc; }
+    .comprar-btn { background: linear-gradient(145deg, #fff, #000); color: #111; font-weight: bold; }
+    .comprar-btn:hover { background: linear-gradient(145deg, #e0e0e0, #111); color: white; }
+    .ticket-btn { background: linear-gradient(145deg, #000, #fff); color: white; }
+    .ticket-btn:hover { background: linear-gradient(145deg, #222, #ccc); color: black; }
 
     /* Redes sociales */
     .social-icons {
@@ -194,7 +190,7 @@
       border-radius: 8px 0 0 8px;
       transition: 0.3s;
     }
-    .social-icons a:hover { background: #ff0033; }
+    .social-icons a:hover { background: white; color: black; }
   </style>
 </head>
 <body>
@@ -280,3 +276,4 @@
 
 </body>
 </html>
+
