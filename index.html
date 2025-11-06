@@ -30,19 +30,14 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
-      /* Fondo optimizado */
       background-color: #0a0a0a;
       background-image: url('https://files.catbox.moe/dfmf63.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-
-      /* Evita microparpadeos en Android/PC */
       will-change: opacity, background-image;
       backface-visibility: hidden;
       transform: translateZ(0);
-
       z-index: 9999;
     }
     #welcome-screen h1 {
@@ -144,6 +139,31 @@
       border: 1px solid rgba(255,0,0,0.3);
     }
     .staff-info { font-size: 0.9rem; color: #ff9999; }
+
+    /* --- REDES SOCIALES --- */
+    .socials-panel {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .socials-panel h2 {
+      color: #ff3b3b;
+      text-shadow: 0 0 12px red;
+      margin-bottom: 15px;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .social-icons a {
+      color: white;
+      font-size: 1.8rem;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ff0000;
+      transform: scale(1.2);
+    }
 
     /* --- CONTENIDO DE LA TIENDA --- */
     .store-content {
@@ -296,13 +316,25 @@
   </div>
 
   <div id="store">
+    <!-- PANEL STAFF -->
     <div class="staff-panel">
       <h2>ENCARGADOS</h2>
       <div class="staff-member"><img src="https://files.catbox.moe/wfaxti.png"><div class="staff-info"><b>Piero Quispe</b><br>Owner</div></div>
       <div class="staff-member"><img src="https://files.catbox.moe/ptvp3v.gif"><div class="staff-info"><b>Hilnzo</b><br>Owner</div></div>
       <div class="staff-member"><img src="https://files.catbox.moe/56uipq.png"><div class="staff-info"><b>Kalcor</b><br>Owner</div></div>
+
+      <!-- REDES SOCIALES -->
+      <div class="socials-panel">
+        <h2>SÍGUENOS</h2>
+        <div class="social-icons">
+          <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
     </div>
 
+    <!-- CONTENIDO DE LA TIENDA -->
     <div class="store-content">
       <h1>INJERTOS STORE</h1>
       <h2 id="store-subtitle"></h2>
@@ -318,6 +350,7 @@
       </div>
 
       <div class="aportes" id="aportes">
+        <!-- CARD EXISTENTE -->
         <div class="aporte-card" data-category="efectos">
           <img src="https://files.catbox.moe/utloti.png" alt="Aporte Slix">
           <p><b>APORTE FPS UP</b></p>
@@ -337,10 +370,32 @@
             <a href="#">Ticket</a>
           </div>
         </div>
+
+        <!-- NUEVOS APORTES -->
+        <div class="aporte-card" data-category="vehiculos">
+          <img src="https://files.catbox.moe/example.png" alt="Optimización FPS">
+          <p><b>MEJOR OPTIMIZACIÓN</b></p>
+          <p>Reducción de lag y aumento de FPS</p>
+          <div class="aporte-buttons">
+            <a href="#">Comprar</a>
+            <a href="#">Ticket</a>
+          </div>
+        </div>
+
+        <div class="aporte-card" data-category="armas">
+          <img src="https://files.catbox.moe/example2.png" alt="Pack Armas HD 2">
+          <p><b>PACK ARMAS HD</b></p>
+          <p>Texturas realistas y optimizadas</p>
+          <div class="aporte-buttons">
+            <a href="#">Comprar</a>
+            <a href="#">Ticket</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- CONTROLES DE MÚSICA -->
   <div id="music-controls">
     <button id="play-pause"><i class="fa-solid fa-play"></i></button>
     <input type="range" id="volume" min="0" max="1" step="0.01" value="0.6">
@@ -384,56 +439,6 @@
         music.play();
         playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         showToast("🎵 Música reproduciendo");
-      } else {
-        music.pause();
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-        showToast("🔇 Música pausada");
-      }
-    };
-    volumeControl.oninput = e => music.volume = e.target.value;
+      } else
 
-    // Buscador y filtros
-    const searchInput = document.getElementById('search-input');
-    const filterCategory = document.getElementById('filter-category');
-    const cards = document.querySelectorAll('.aporte-card');
-
-    function filterMods() {
-      const term = searchInput.value.toLowerCase();
-      const category = filterCategory.value;
-      cards.forEach(card => {
-        const name = card.querySelector('p b').textContent.toLowerCase();
-        const matchCategory = category === "all" || card.dataset.category === category;
-        card.style.display = (name.includes(term) && matchCategory) ? "flex" : "none";
-      });
-    }
-    searchInput.addEventListener('input', filterMods);
-    filterCategory.addEventListener('change', filterMods);
-
-    // Toast
-    function showToast(msg) {
-      const toast = document.createElement('div');
-      toast.textContent = msg;
-      toast.className = 'toast';
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
-    }
-
-    // Partículas
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 60 },
-        "color": { "value": "#ff0000" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.6 },
-        "size": { "value": 3 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "events": { "onhover": { "enable": true, "mode": "repulse" } },
-        "modes": { "repulse": { "distance": 80, "duration": 0.4 } }
-      }
-    });
-  </script>
-</body>
-</html>
 
