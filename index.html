@@ -12,6 +12,7 @@
       background: #121212;
       color: white;
       text-align: center;
+      overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
 
@@ -48,16 +49,21 @@
       background: rgba(255, 255, 255, 1);
     }
 
-    /* --- Tienda de aportes --- */
+    /* --- Tienda --- */
     #store {
       display: none;
       padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
     }
 
     #store h1 {
       margin-bottom: 40px;
       font-size: 2.5rem;
       text-shadow: 0 0 10px #ff0033;
+      width: 100%;
     }
 
     .aportes {
@@ -65,6 +71,8 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
+      flex: 1;
+      max-width: 900px;
     }
 
     .aporte-card {
@@ -118,125 +126,39 @@
     .ticket-btn { background: #00ccff; color: white; }
     .ticket-btn:hover { background: #0099cc; }
 
-    /* --- Redes sociales fijas --- */
-    .social-icons {
-      position: fixed;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1001;
+    /* --- Panel STAFF --- */
+    .staff-panel {
+      width: 260px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 0 20px rgba(255, 0, 51, 0.2);
+      backdrop-filter: blur(8px);
     }
-    .social-icons a {
+    .staff-panel h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #ff0033;
+    }
+    .staff-member {
       display: flex;
-      justify-content: center;
       align-items: center;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+    .staff-member img {
       width: 50px;
       height: 50px;
-      background: #222;
-      color: white;
-      border-radius: 8px 0 0 8px;
-      font-size: 1.5rem;
-      transition: 0.3s;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      object-fit: cover;
     }
-    .social-icons a:hover { background: #ff0033; }
-
-    @media(max-width:768px){
-      .aporte-card { width: 80%; }
-      #welcome-screen h1 { font-size: 2rem; }
-      #enter-btn { padding: 12px 30px; font-size: 1rem; }
-      .social-icons a { width: 40px; height: 40px; font-size: 1.2rem; }
+    .staff-info {
+      display: flex;
+      flex-direction: column;
     }
-  </style>
-</head>
-<body>
-
-  <!-- --- Reproductor oculto --- -->
-  <audio id="bg-music" src="https://files.catbox.moe/qye9ic.mp3" loop preload="auto"></audio>
-
-  <!-- --- Pantalla de bienvenida --- -->
-  <div id="welcome-screen">
-    <h1>9 MESES PARA NACER Y 1 MINUTO PARA MORIR</h1>
-    <button id="enter-btn">Ingresar</button>
-  </div>
-
-  <!-- --- Tienda de aportes --- -->
-  <div id="store">
-    <h1>TIENDA INJERTOS</h1>
-    <div class="aportes">
-
-      <!-- Aporte 1 -->
-      <div class="aporte-card">
-        <img src="https://files.catbox.moe/utloti.png" alt="Aporte 1">
-        <div class="name">APORTE SLIX</div>
-        <div class="desc">Incluye efectos y mods optimizados, muy parte de lo mencionado, tiene armas entre otros comandos, abrir ticket para más información.</div>
-        <div class="buttons">
-          <a href="https://www.paypal.com/paypalme/TU_CORREO/5" target="_blank">
-            <button class="buy-btn">Comprar</button>
-          </a>
-          <button class="ticket-btn">Ticket</button>
-        </div>
-      </div>
-
-      <!-- Aporte 2 -->
-      <div class="aporte-card">
-        <img src="https://files.catbox.moe/mldvwx.png" alt="Aporte 2">
-        <div class="name">Aporte 2 - PACK ARMAS HD</div>
-        <div class="desc">Armas con modelos 3D en alta resolución, efectos de fuego y sonido realista.</div>
-        <div class="buttons">
-          <a href="https://www.paypal.com/paypalme/TU_CORREO/10" target="_blank">
-            <button class="buy-btn">Comprar</button>
-          </a>
-          <button class="ticket-btn">Ticket</button>
-        </div>
-      </div>
-
-      <!-- Aporte 3 -->
-      <div class="aporte-card">
-        <img src="https://files.catbox.moe/vbb2co.png" alt="Aporte 3">
-        <div class="name">Aporte 3 - MAPA EXCLUSIVO</div>
-        <div class="desc">Nuevo mapa con ambientación nocturna, neones y zonas secretas desbloqueables.</div>
-        <div class="buttons">
-          <a href="https://www.paypal.com/paypalme/TU_CORREO/15" target="_blank">
-            <button class="buy-btn">Comprar</button>
-          </a>
-          <button class="ticket-btn">Ticket</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- --- Redes sociales fijas --- -->
-  <div class="social-icons">
-    <a href="https://discord.gg/KwT6k89T" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://www.youtube.com/@fmp-b1c" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
-  </div>
-
-  <!-- --- Scripts --- -->
-  <script>
-    const enterBtn = document.getElementById('enter-btn');
-    const welcomeScreen = document.getElementById('welcome-screen');
-    const store = document.getElementById('store');
-    const music = document.getElementById('bg-music');
-
-    enterBtn.addEventListener('click', () => {
-      welcomeScreen.style.display = 'none';
-      store.style.display = 'block';
-      music.volume = 0.6;
-      const playPromise = music.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          alert("Haz clic en cualquier parte de la pantalla para activar la música 🎵");
-          document.body.addEventListener('click', () => music.play(), { once: true });
-        });
-      }
-    });
-  </script>
-
-</body>
-</html>
-
+    .staff-name {
+      font-
