@@ -131,7 +131,7 @@
 <body>
 
   <!-- --- Reproductor oculto --- -->
-  <audio id="bg-music" src="https://files.catbox.moe/qye9ic.mp3" loop></audio>
+  <audio id="bg-music" src="https://files.catbox.moe/qye9ic.mp3" loop preload="auto"></audio>
 
   <!-- --- Pantalla de bienvenida --- -->
   <div id="welcome-screen">
@@ -148,4 +148,71 @@
         <img src="https://via.placeholder.com/200x150.png?text=Aporte+1" alt="Aporte 1">
         <div class="name">Aporte 1</div>
         <div class="buttons">
-          <a href="h
+          <a href="https://www.paypal.com/paypalme/TU_CORREO/5" target="_blank">
+            <button class="buy-btn">Comprar</button>
+          </a>
+          <button class="ticket-btn">Ticket</button>
+        </div>
+      </div>
+      <!-- Aporte 2 -->
+      <div class="aporte-card">
+        <img src="https://via.placeholder.com/200x150.png?text=Aporte+2" alt="Aporte 2">
+        <div class="name">Aporte 2</div>
+        <div class="buttons">
+          <a href="https://www.paypal.com/paypalme/TU_CORREO/10" target="_blank">
+            <button class="buy-btn">Comprar</button>
+          </a>
+          <button class="ticket-btn">Ticket</button>
+        </div>
+      </div>
+      <!-- Aporte 3 -->
+      <div class="aporte-card">
+        <img src="https://via.placeholder.com/200x150.png?text=Aporte+3" alt="Aporte 3">
+        <div class="name">Aporte 3</div>
+        <div class="buttons">
+          <a href="https://www.paypal.com/paypalme/TU_CORREO/15" target="_blank">
+            <button class="buy-btn">Comprar</button>
+          </a>
+          <button class="ticket-btn">Ticket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- Redes sociales fijas --- -->
+  <div class="social-icons">
+    <a href="https://discord.gg/KwT6k89T" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://www.youtube.com/@fmp-b1c" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <!-- --- Scripts --- -->
+  <script>
+    const enterBtn = document.getElementById('enter-btn');
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const store = document.getElementById('store');
+    const music = document.getElementById('bg-music');
+
+    enterBtn.addEventListener('click', () => {
+      // Mostrar tienda
+      welcomeScreen.style.display = 'none';
+      store.style.display = 'block';
+
+      // Intentar reproducir música
+      music.volume = 0.6; // volumen moderado
+      const playPromise = music.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          console.log("Música iniciada correctamente");
+        }).catch(error => {
+          console.warn("El navegador bloqueó la reproducción:", error);
+          alert("Haz clic en cualquier parte de la pantalla para activar la música 🎵");
+          document.body.addEventListener('click', () => music.play(), { once: true });
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
