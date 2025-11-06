@@ -49,21 +49,70 @@
       background: rgba(255, 255, 255, 1);
     }
 
-    /* --- Tienda --- */
+    /* --- Contenedor principal --- */
     #store {
       display: none;
-      padding: 60px 20px;
+      padding: 50px 20px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 40px;
+      gap: 50px;
+      min-height: 100vh;
     }
 
-    #store h1 {
+    /* --- Panel STAFF --- */
+    .staff-panel {
+      width: 260px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 0 20px rgba(255, 0, 51, 0.2);
+      backdrop-filter: blur(8px);
+    }
+    .staff-panel h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #ff0033;
+    }
+    .staff-member {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+    .staff-member img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      object-fit: cover;
+    }
+    .staff-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .staff-name {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .staff-role {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    /* --- Tienda de aportes --- */
+    .store-content {
+      flex: 1;
+      max-width: 900px;
+    }
+
+    .store-content h1 {
       margin-bottom: 40px;
       font-size: 2.5rem;
       text-shadow: 0 0 10px #ff0033;
-      width: 100%;
     }
 
     .aportes {
@@ -71,8 +120,6 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      flex: 1;
-      max-width: 900px;
     }
 
     .aporte-card {
@@ -126,39 +173,96 @@
     .ticket-btn { background: #00ccff; color: white; }
     .ticket-btn:hover { background: #0099cc; }
 
-    /* --- Panel STAFF --- */
-    .staff-panel {
-      width: 260px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      padding: 20px;
-      text-align: left;
-      box-shadow: 0 0 20px rgba(255, 0, 51, 0.2);
-      backdrop-filter: blur(8px);
-    }
-    .staff-panel h2 {
-      text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      text-shadow: 0 0 8px #ff0033;
-    }
-    .staff-member {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      gap: 10px;
-    }
-    .staff-member img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.3);
-      object-fit: cover;
-    }
-    .staff-info {
+    /* --- Redes sociales fijas --- */
+    .social-icons {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
       display: flex;
       flex-direction: column;
+      gap: 15px;
+      z-index: 1001;
     }
-    .staff-name {
-      font-
+    .social-icons a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background: #222;
+      color: white;
+      border-radius: 8px 0 0 8px;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+    .social-icons a:hover { background: #ff0033; }
+
+    @media(max-width: 1000px){
+      #store {
+        flex-direction: column;
+        align-items: center;
+      }
+      .staff-panel {
+        width: 90%;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- --- Reproductor oculto --- -->
+  <audio id="bg-music" src="https://files.catbox.moe/qye9ic.mp3" loop preload="auto"></audio>
+
+  <!-- --- Pantalla de bienvenida --- -->
+  <div id="welcome-screen">
+    <h1>9 MESES PARA NACER Y 1 MINUTO PARA MORIR</h1>
+    <button id="enter-btn">Ingresar</button>
+  </div>
+
+  <!-- --- Tienda con panel STAFF --- -->
+  <div id="store">
+    <div class="staff-panel">
+      <h2>STAFF DISCORD</h2>
+      <div class="staff-member">
+        <img src="https://files.catbox.moe/8t1q7u.png" alt="Owner">
+        <div class="staff-info">
+          <div class="staff-name">Slix</div>
+          <div class="staff-role">Owner / Developer</div>
+        </div>
+      </div>
+      <div class="staff-member">
+        <img src="https://files.catbox.moe/rs5r5x.png" alt="Admin">
+        <div class="staff-info">
+          <div class="staff-name">Lince</div>
+          <div class="staff-role">Administrador</div>
+        </div>
+      </div>
+      <div class="staff-member">
+        <img src="https://files.catbox.moe/jn5mps.png" alt="Soporte">
+        <div class="staff-info">
+          <div class="staff-name">Neko</div>
+          <div class="staff-role">Soporte Técnico</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-content">
+      <h1>TIENDA INJERTOS</h1>
+      <div class="aportes">
+        <div class="aporte-card">
+          <img src="https://files.catbox.moe/utloti.png" alt="Aporte 1">
+          <div class="name">APORTE SLIX</div>
+          <div class="desc">Incluye efectos y mods optimizados, armas, comandos y más. Abrir ticket para detalles.</div>
+          <div class="buttons">
+            <a href="https://www.paypal.com/paypalme/TU_CORREO/5" target="_blank"><button class="buy-btn">Comprar</button></a>
+            <button class="ticket-btn">Ticket</button>
+          </div>
+        </div>
+
+        <div class="aporte-card">
+          <img src="https://files.catbox.moe/mldvwx.png" alt="Aporte 2">
+          <div class="name">PACK ARMAS HD</div>
+          <div class="desc">Armas 3D en alta resolución, con efectos de fueg
+
