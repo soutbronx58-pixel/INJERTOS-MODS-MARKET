@@ -107,7 +107,7 @@
     /* Tienda */
     .store-content {
       flex: 1;
-      max-width: 900px;
+      max-width: 1000px;
     }
     .store-content h1 {
       font-size: 2rem;
@@ -118,46 +118,51 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
     }
 
-    /* Tarjetas de aportes (efecto blanco + negro) */
+    /* Tarjetas de aportes (agrandadas, blanco y negro elegante) */
     .aporte-card {
-      width: 260px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 2px solid rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 15px;
+      width: 340px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      padding: 20px;
       transition: 0.3s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05), inset 0 0 10px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08), inset 0 0 15px rgba(0, 0, 0, 0.5);
     }
     .aporte-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
       border-color: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), inset 0 0 25px rgba(0, 0, 0, 0.7);
     }
 
     .aporte-card img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
       transition: 0.3s;
     }
 
+    .aporte-card p {
+      font-size: 1.1rem;
+      margin: 5px 0;
+    }
+
     .aporte-buttons {
-      margin-top: 10px;
+      margin-top: 15px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       width: 100%;
       justify-content: center;
     }
     .aporte-buttons a, .aporte-buttons button {
       flex: 1;
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       border: none;
       font-weight: bold;
@@ -166,10 +171,23 @@
       text-align: center;
       transition: 0.2s;
     }
-    .comprar-btn { background: linear-gradient(145deg, #fff, #000); color: #111; font-weight: bold; }
-    .comprar-btn:hover { background: linear-gradient(145deg, #e0e0e0, #111); color: white; }
-    .ticket-btn { background: linear-gradient(145deg, #000, #fff); color: white; }
-    .ticket-btn:hover { background: linear-gradient(145deg, #222, #ccc); color: black; }
+    .comprar-btn { 
+      background: linear-gradient(145deg, #fff, #000); 
+      color: #111; 
+      font-weight: bold; 
+    }
+    .comprar-btn:hover { 
+      background: linear-gradient(145deg, #e0e0e0, #111); 
+      color: white; 
+    }
+    .ticket-btn { 
+      background: linear-gradient(145deg, #000, #fff); 
+      color: white; 
+    }
+    .ticket-btn:hover { 
+      background: linear-gradient(145deg, #222, #ccc); 
+      color: black; 
+    }
 
     /* Redes sociales */
     .social-icons {
@@ -276,4 +294,3 @@
 
 </body>
 </html>
-
