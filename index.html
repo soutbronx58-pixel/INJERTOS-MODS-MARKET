@@ -121,7 +121,7 @@
       gap: 30px;
     }
 
-    /* Tarjetas de aportes (agrandadas, blanco y negro elegante) */
+    /* Tarjetas de aportes */
     .aporte-card {
       width: 340px;
       background: rgba(255, 255, 255, 0.08);
@@ -140,19 +140,16 @@
       border-color: rgba(255, 255, 255, 0.7);
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), inset 0 0 25px rgba(0, 0, 0, 0.7);
     }
-
     .aporte-card img {
       width: 100%;
       border-radius: 12px;
       margin-bottom: 12px;
       transition: 0.3s;
     }
-
     .aporte-card p {
       font-size: 1.1rem;
       margin: 5px 0;
     }
-
     .aporte-buttons {
       margin-top: 15px;
       display: flex;
@@ -160,34 +157,18 @@
       width: 100%;
       justify-content: center;
     }
-    .aporte-buttons a, .aporte-buttons button {
+    .aporte-buttons a {
       flex: 1;
       padding: 12px;
       border-radius: 8px;
-      border: none;
       font-weight: bold;
-      cursor: pointer;
-      color: white;
       text-align: center;
       transition: 0.2s;
     }
-    .comprar-btn { 
-      background: linear-gradient(145deg, #fff, #000); 
-      color: #111; 
-      font-weight: bold; 
-    }
-    .comprar-btn:hover { 
-      background: linear-gradient(145deg, #e0e0e0, #111); 
-      color: white; 
-    }
-    .ticket-btn { 
-      background: linear-gradient(145deg, #000, #fff); 
-      color: white; 
-    }
-    .ticket-btn:hover { 
-      background: linear-gradient(145deg, #222, #ccc); 
-      color: black; 
-    }
+    .comprar-btn { background: linear-gradient(145deg, #fff, #000); color: #111; }
+    .comprar-btn:hover { background: linear-gradient(145deg, #e0e0e0, #111); color: white; }
+    .ticket-btn { background: linear-gradient(145deg, #000, #fff); color: white; }
+    .ticket-btn:hover { background: linear-gradient(145deg, #222, #ccc); color: black; }
 
     /* Redes sociales */
     .social-icons {
@@ -209,6 +190,25 @@
       transition: 0.3s;
     }
     .social-icons a:hover { background: white; color: black; }
+
+    /* Contador de visitas */
+    #visit-counter {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      padding: 10px 20px;
+      backdrop-filter: blur(10px);
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      text-shadow: 0 0 5px black;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      display: none;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -250,8 +250,8 @@
           <p><b>Aporte Slix</b></p>
           <p>Mods optimizados, armas y efectos.</p>
           <div class="aporte-buttons">
-            <a href="https://www.paypal.me/TU_USUARIO" target="_blank" class="comprar-btn">Comprar</a>
-            <a href="https://discord.gg/KwT6k89T" target="_blank" class="ticket-btn">Ticket</a>
+            <a href="#" class="comprar-btn">Comprar</a>
+            <a href="#" class="ticket-btn">Ticket</a>
           </div>
         </div>
 
@@ -260,8 +260,8 @@
           <p><b>Pack Armas HD</b></p>
           <p>Armas 3D realistas con efectos.</p>
           <div class="aporte-buttons">
-            <a href="https://www.paypal.me/TU_USUARIO" target="_blank" class="comprar-btn">Comprar</a>
-            <a href="https://discord.gg/KwT6k89T" target="_blank" class="ticket-btn">Ticket</a>
+            <a href="#" class="comprar-btn">Comprar</a>
+            <a href="#" class="ticket-btn">Ticket</a>
           </div>
         </div>
 
@@ -269,10 +269,12 @@
     </div>
   </div>
 
+  <div id="visit-counter">👁️ Visitas: <span id="count">0</span></div>
+
   <div class="social-icons">
-    <a href="https://discord.gg/KwT6k89T" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://www.youtube.com/@fmp-b1c" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
   </div>
 
   <script>
@@ -280,10 +282,20 @@
     const welcome = document.getElementById('welcome-screen');
     const store = document.getElementById('store');
     const music = document.getElementById('bg-music');
+    const counterBox = document.getElementById('visit-counter');
+    const counterNum = document.getElementById('count');
+
+    // Simula contador global (LocalStorage)
+    let visits = localStorage.getItem('visitCount') || 0;
+    visits++;
+    localStorage.setItem('visitCount', visits);
 
     btn.addEventListener('click', () => {
       welcome.style.display = 'none';
       store.style.display = 'flex';
+      counterBox.style.display = 'block';
+      counterNum.textContent = visits;
+
       music.volume = 0.6;
       music.play().catch(() => {
         alert("Haz clic para activar la música 🎵");
